@@ -17,12 +17,13 @@ declare -i FAIL=3
 
 # Functions
 function log() {
-    if [ $1 == OK ] then
-        printf "${BOLD}[${GREEN} Ok ${ENDCOLOR}${BOLD}] $2${ENDCOLOR}"
-    elif [ $1 == WARN ] then
-        printf "${BOLD}[${YELLOW}Warn${ENDCOLOR}${BOLD}] $2${ENDCOLOR}"
-    elif [ $1 == FAIL ] then
-        printf "${BOLD}[${RED}Fail${ENDCOLOR}${BOLD}] $2${ENDCOLOR}"
+    if [ $1 == OK ]; then
+        printf "${BOLD}[${GREEN} Ok ${ENDCOLOR}${BOLD}] $2${ENDCOLOR}\n"
+    elif [ $1 == WARN ]; then
+        printf "${BOLD}[${YELLOW}Warn${ENDCOLOR}${BOLD}] $2${ENDCOLOR}\n"
+    elif [ $1 == FAIL ]; then
+        printf "${BOLD}[${RED}Fail${ENDCOLOR}${BOLD}] $2${ENDCOLOR}\n"
+    fi
 }
 
 function change_sh() {
