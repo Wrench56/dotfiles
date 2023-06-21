@@ -27,11 +27,11 @@ function log() {
 }
 
 function change_sh() {
-    sudo pacman -S dash
-    log OK "Downloaded dash shell..."
-    sudo rm /bin/sh
-    sudo ln -s /bin/dash /bin/sh
-    log OK "Default shell running enviroment changed to dash"
+    # sudo pacman -S dash
+    # log OK "Downloaded dash shell..."
+    # sudo rm /bin/sh
+    # sudo ln -s /bin/dash /bin/sh
+    # log OK "Default shell running enviroment changed to dash"
 }
 
 
