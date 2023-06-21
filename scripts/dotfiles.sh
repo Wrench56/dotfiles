@@ -2,10 +2,9 @@
 
 # Script to symlink every dotfile where it needs to be
 
-$DOTFILES="$(dirname $(realpath -s $0))/.."
+DOTFILES=$(dirname -- "$(realpath -- "$(dirname $(realpath -s $0))")")
 
 # Wrapper
-
 RED="\e[31m"
 GREEN="\e[32m"
 BOLD="\033[1m"
