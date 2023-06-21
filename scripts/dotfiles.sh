@@ -2,6 +2,8 @@
 
 # Script to symlink every dotfile where it needs to be
 
+$DOTFILES="$(dirname $(realpath -s $0))/.."
+
 # Wrapper
 
 RED="\e[31m"
@@ -20,9 +22,5 @@ wrapper() {
 }
 
 
-cd ..
-
-wrapper "Make .xinitrc an executable" chmod +x .xinitrc
-wrapper "Move .xinitrc to HOME directory" ln -s .xinitrc ~/.xinitrc
-
-cd scripts
+wrapper "Make .xinitrc an executable" chmod +x $DOTFILES/.xinitrc
+wrapper "Move .xinitrc to HOME directory" ln -s $DOTFILES/.xinitrc ~/.xinitrc
