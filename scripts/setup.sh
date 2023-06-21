@@ -42,26 +42,11 @@ sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 sudo pacman -Sy pacman-contrib
 sudo systemctl enable paccache.timer
 
-# Get neofetch
-sudo pacman -S neofetch
-
-# Get htop
-sudo pacman -S htop
-
-# Get git
-sudo pacman -S git
-
-# Get nano editor
-sudo pacman -S nano
-
-# Get manuals
-sudo pacman -S man-db
-
-# Get exa ("better" ls)
-sudo pacman -S exa
+# Get some frequently used packages
+sudo pacman -S --noconfirm neofetch htop git nano man-db exa
 
 # Get yay AUR package helper
-sudo pacman -S --needed git base-devel
+sudo pacman -S --needed --noconfirm git base-devel
 sudo pacman -S --noconfirm go
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -70,10 +55,10 @@ cd ..
 rm -rf yay
 
 # Get alacritty terminal emulator (I want a lightweight terminal with opaque background)
-sudo pacman -S alacritty
+sudo pacman -S --noconfirm alacritty
 
 # Get i3 window manager (only install the gnu-free-fonts)
-sudo pacman -S i3 xorg xorg-xdm dmenu i3status ttf-hack
+sudo pacman -S --noconfirm i3 xorg xorg-xdm dmenu i3status ttf-hack
 echo “exec i3” > ~/.xsession
 chmod +x ~/.xsession
 
@@ -91,7 +76,7 @@ sudo sed -i -n "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Check for bashisms
-sudo pacman -S checkbashisms
+sudo pacman -S --noconfirm checkbashisms
 return_value=$(checkbashisms -e)
 if [ $return_value -e 0 ]; then
     if [ "$(find /bin/ -maxdepth 1 -type l -ls /bin/ | grep "/bin/sh -> bash" )" -e 0 ]; then
