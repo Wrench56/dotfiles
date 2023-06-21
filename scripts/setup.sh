@@ -91,7 +91,7 @@ if [ $return_value -e 0 ]; then
     fi
     change_sh
 else
-    log OK "Default shell is already dash"
+    log FAIL "The system detected bashisms. Can't configure dash as the default shell"
 fi
 
 
