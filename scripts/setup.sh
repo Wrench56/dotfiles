@@ -39,7 +39,7 @@ function change_sh() {
 sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
 # Weekly pacman cache clearing
-sudo pacman -Sy pacman-contrib
+sudo pacman -Sy --noconfirm pacman-contrib
 sudo systemctl enable paccache.timer
 
 # Get some frequently used packages
@@ -66,11 +66,11 @@ chmod +x ~/.xsession
 sudo systemctl enable xdm.service
 
 # Fix boot messages disappearing
-sudo sed -i -n s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service 
-sudo sed -i -n 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"/' /etc/default/grub
+sudo sed -i s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service 
+sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"/' /etc/default/grub
 
 # Hide the GRUB boot menu
-sudo sed -i -n "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default/grub
+sudo sed -i "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default/grub
 
 # Run mkconfig for GRUB
 sudo grub-mkconfig -o /boot/grub/grub.cfg
