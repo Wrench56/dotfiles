@@ -1,14 +1,29 @@
+#!/bin/bash
+
 # Post install script for Arch Linux
 
 # Setup colors
 RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
 ENDCOLOR="\e[0m"
 
 if [ "$USER" != "root" ] 
 then
-    echo -e " [${RED}ERROR${ENDCOLOR}] Use the setup script with 'sudo'!"
+    printf " [${RED}Fail${ENDCOLOR}] Use the setup script with 'sudo'!"
     exit
 fi
+
+# Functions
+
+function change_sh() {
+    sudo pacman -S dash
+    printf "[${GREEN} Ok ${ENDCOLOR}] Downloaded Dash shell..."
+    sudo rm /bin/sh
+    sudo ln -s /bin/dash /bin/sh
+    printf "[${GREEN} Ok ${ENDCOLOR}] Default shell running enviroment changed to dash"
+}
+
 
 # Enable pacman parallel downloads
 sudo sed -i -n "s/#ParallelDownloads/ParallelDownload/" /etc/pacman.conf
@@ -64,6 +79,24 @@ sudo sed -i -n "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default
 
 # Run mkconfig for GRUB
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# Check for bashisms
+sudo pacman -S checkbashisms
+return_value=checkbashisms -e
+if [ $return_value -e 0 ]; then
+    if [ "$(find /bin/ -maxdepth 1 -type l -ls /bin/ | grep "/bin/sh -> bash" )" -e 0 ]; then
+        printf "[${YELLOW}Warn${ENDCOLOR}] Default shell is not bash"
+        printf "    Continue? [Y/N]"
+        read answer
+        if [ "$answer" != "${answer#[Yy]}" ] ;then 
+            change_sh
+        else
+            printf "[${YELLOW}Warn${ENDCOLOR}] The default sh won't be changed"
+        fi
+    fi
+    change_sh
+fi
+
 
 # Download brave browser (might change)
 yay -S brave-bin
