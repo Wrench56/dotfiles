@@ -8,17 +8,12 @@ GREEN="\e[32m"
 YELLOW="\e[33m"
 ENDCOLOR="\e[0m"
 
-if [ "$USER" != "root" ] 
-then
-    printf "[${RED}Fail${ENDCOLOR}] Use the setup script with 'sudo'!"
-    exit
-fi
 
 # Functions
 
 function change_sh() {
     sudo pacman -S dash
-    printf "[${GREEN} Ok ${ENDCOLOR}] Downloaded Dash shell..."
+    printf "[${GREEN} Ok ${ENDCOLOR}] Downloaded dash shell..."
     sudo rm /bin/sh
     sudo ln -s /bin/dash /bin/sh
     printf "[${GREEN} Ok ${ENDCOLOR}] Default shell running enviroment changed to dash"
@@ -51,11 +46,11 @@ sudo pacman -S man-db
 sudo pacman -S exa
 
 # Get yay AUR package helper
-pacman -S --needed git base-devel
-pacman -S --noconfirm go
+sudo pacman -S --needed git base-devel
+sudo pacman -S --noconfirm go
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg -si --noconfirm
 cd ..
 rm -rf yay
 
@@ -95,6 +90,8 @@ if [ $return_value -e 0 ]; then
         fi
     fi
     change_sh
+else
+    printf "[${GREEN} Ok ${ENDCOLOR}] Default shell is already dash"
 fi
 
 
