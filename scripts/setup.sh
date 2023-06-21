@@ -38,6 +38,16 @@ chmod +x ~/.xsession
 # Enable X display manager
 sudo systemctl enable xdm.service
 
+# Fix boot messages disappearing
+sudo sed -i -n s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service 
+sudo sed -i -n 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"/' /etc/default/grub
+
+# Hide the GRUB boot menu
+sudo sed -i -n "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default/grub
+
+# Run mkconfig for GRUB
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
 # Download brave browser (might change)
 yay -S brave-bin
 
