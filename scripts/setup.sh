@@ -36,7 +36,7 @@ function change_sh() {
 
 
 # Enable pacman parallel downloads
-sudo sed -i -n "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
+sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
 # Weekly pacman cache clearing
 sudo pacman -Sy pacman-contrib
