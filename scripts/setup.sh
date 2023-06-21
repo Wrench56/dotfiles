@@ -2,39 +2,6 @@
 
 # Post install script for Arch Linux
 
-# Setup colors
-RED="\e[31m"
-GREEN="\e[32m"
-YELLOW="\e[33m"
-BOLD="\033[1m"
-ENDCOLOR="\e[0m"
-
-declare -i OK=0
-declare -i INFO=1
-declare -i WARN=2
-declare -i FAIL=3
-
-
-# Functions
-function log() {
-    if [ $1 == OK ]; then
-        printf "${BOLD}[${GREEN} Ok ${ENDCOLOR}${BOLD}] $2${ENDCOLOR}\n"
-    elif [ $1 == WARN ]; then
-        printf "${BOLD}[${YELLOW}Warn${ENDCOLOR}${BOLD}] $2${ENDCOLOR}\n"
-    elif [ $1 == FAIL ]; then
-        printf "${BOLD}[${RED}Fail${ENDCOLOR}${BOLD}] $2${ENDCOLOR}\n"
-    fi
-}
-
-function change_sh() {
-    # sudo pacman -S dash
-    log OK "Downloaded dash shell..."
-    # sudo rm /bin/sh
-    # sudo ln -s /bin/dash /bin/sh
-    log OK "Default shell running enviroment changed to dash"
-}
-
-
 # Enable pacman parallel downloads
 sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
@@ -74,26 +41,6 @@ sudo sed -i "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default/gr
 
 # Run mkconfig for GRUB
 sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-# Check for bashisms
-sudo pacman -S --noconfirm checkbashisms
-return_value=$(checkbashisms -e)
-if [ $return_value -e 0 ]; then
-    if [ "$(find /bin/ -maxdepth 1 -type l -ls /bin/ | grep "/bin/sh -> bash" )" -e 0 ]; then
-        log WARN "Default shell is not bash"
-        printf "    Continue? [Y/N]"
-        read answer
-        if [ "$answer" != "${answer#[Yy]}" ] ;then 
-            change_sh
-        else
-            log WARN "The default sh won't be changed"
-        fi
-    fi
-    change_sh
-else
-    log FAIL "The system detected bashisms. Can't configure dash as the default shell"
-fi
-
 
 # Download brave browser (might change)
 yay -S brave-bin --noconfirm
