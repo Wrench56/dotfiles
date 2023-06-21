@@ -59,7 +59,7 @@ sudo pacman -S --noconfirm alacritty
 
 # Get i3 window manager (only install the gnu-free-fonts)
 sudo pacman -S --noconfirm i3 xorg xorg-xdm dmenu i3status ttf-hack
-echo “exec i3” > ~/.xsession
+echo "exec i3" > ~/.xsession
 chmod +x ~/.xsession
 
 # Enable X display manager
