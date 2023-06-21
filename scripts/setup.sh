@@ -1,5 +1,13 @@
 # Post install script for Arch Linux
 
+# Enable pacman parallel downloads
+sudo sed -i -n "s/#ParallelDownloads/ParallelDownload/" /etc/pacman.conf
+
+# Weekly pacman cache clearing
+sudo pacman -Sy pacman-contrib
+sudo systemctl enable paccache.timer
+
+
 # Get neofetch
 sudo pacman -S neofetch
 
