@@ -42,6 +42,14 @@ sudo sed -i "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default/gr
 # Run mkconfig for GRUB
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
+# Download feh & set up wallpaper
+sudo pacman -S --noconfirm feh
+feh --bg-scale wallpaper.png
+
+##########################################
+################## APPS ##################
+##########################################
+
 # Download brave browser (might change)
 yay -S brave-bin --noconfirm
 
