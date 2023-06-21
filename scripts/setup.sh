@@ -8,15 +8,19 @@ GREEN="\e[32m"
 YELLOW="\e[33m"
 ENDCOLOR="\e[0m"
 
+# Log printf tags
+OK_TAG="[${GREEN} Ok ${ENDCOLOR}]"
+FAIL_TAG="[${RED}Fail${ENDCOLOR}]"
+WARN_TAG="[${YELLOW}Warn${ENDCOLOR}]"
 
 # Functions
 
 function change_sh() {
     sudo pacman -S dash
-    printf "[${GREEN} Ok ${ENDCOLOR}] Downloaded dash shell..."
+    printf "${OK_TAG} Downloaded dash shell..."
     sudo rm /bin/sh
     sudo ln -s /bin/dash /bin/sh
-    printf "[${GREEN} Ok ${ENDCOLOR}] Default shell running enviroment changed to dash"
+    printf "${OK_TAG} Default shell running enviroment changed to dash"
 }
 
 
@@ -50,7 +54,7 @@ sudo pacman -S --needed git base-devel
 sudo pacman -S --noconfirm go
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si --noconfirm
+makepkg -si
 cd ..
 rm -rf yay
 
@@ -80,23 +84,23 @@ sudo pacman -S checkbashisms
 return_value=$(checkbashisms -e)
 if [ $return_value -e 0 ]; then
     if [ "$(find /bin/ -maxdepth 1 -type l -ls /bin/ | grep "/bin/sh -> bash" )" -e 0 ]; then
-        printf "[${YELLOW}Warn${ENDCOLOR}] Default shell is not bash"
+        printf "${WARN_TAG} Default shell is not bash"
         printf "    Continue? [Y/N]"
         read answer
         if [ "$answer" != "${answer#[Yy]}" ] ;then 
             change_sh
         else
-            printf "[${YELLOW}Warn${ENDCOLOR}] The default sh won't be changed"
+            printf "${WARN_TAG} The default sh won't be changed"
         fi
     fi
     change_sh
 else
-    printf "[${GREEN} Ok ${ENDCOLOR}] Default shell is already dash"
+    printf "${OK_TAG} Default shell is already dash"
 fi
 
 
 # Download brave browser (might change)
-yay -S brave-bin
+yay -S brave-bin --noconfirm
 
 # System update
 sudo pacman -Syu
