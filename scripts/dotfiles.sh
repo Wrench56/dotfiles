@@ -4,4 +4,5 @@
 
 $DOTFILES = ../
 
+chmod +x $DOTFILES/.xinitrc
 ln -s $DOTFILES/.xinitrc ~/.xinitrc
