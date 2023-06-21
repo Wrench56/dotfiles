@@ -10,7 +10,7 @@ ENDCOLOR="\e[0m"
 
 if [ "$USER" != "root" ] 
 then
-    printf " [${RED}Fail${ENDCOLOR}] Use the setup script with 'sudo'!"
+    printf "[${RED}Fail${ENDCOLOR}] Use the setup script with 'sudo'!"
     exit
 fi
 
@@ -82,7 +82,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Check for bashisms
 sudo pacman -S checkbashisms
-return_value=checkbashisms -e
+return_value=$(checkbashisms -e)
 if [ $return_value -e 0 ]; then
     if [ "$(find /bin/ -maxdepth 1 -type l -ls /bin/ | grep "/bin/sh -> bash" )" -e 0 ]; then
         printf "[${YELLOW}Warn${ENDCOLOR}] Default shell is not bash"
