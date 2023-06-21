@@ -28,15 +28,15 @@ function log() {
 
 function change_sh() {
     # sudo pacman -S dash
-    # log OK "Downloaded dash shell..."
+    log OK "Downloaded dash shell..."
     # sudo rm /bin/sh
     # sudo ln -s /bin/dash /bin/sh
-    # log OK "Default shell running enviroment changed to dash"
+    log OK "Default shell running enviroment changed to dash"
 }
 
 
 # Enable pacman parallel downloads
-sudo sed -i -n "s/#ParallelDownloads/ParallelDownload/" /etc/pacman.conf
+sudo sed -i -n "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
 # Weekly pacman cache clearing
 sudo pacman -Sy pacman-contrib
