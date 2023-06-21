@@ -9,23 +9,28 @@ YELLOW="\e[33m"
 BOLD="\033[1m"
 ENDCOLOR="\e[0m"
 
-# Log printf tags
-OK_TAG="${BOLD}[${GREEN} Ok ${ENDCOLOR}${BOLD}]${ENDCOLOR}"
-FAIL_TAG="${BOLD}[${}${RED}Fail${ENDCOLOR}${BOLD}]${ENDCOLOR}"
-WARN_TAG="${BOLD}[${YELLOW}Warn${ENDCOLOR}${BOLD}]${ENDCOLOR}"
+$OK=0
+$INFO=1
+$WARN=2
+$FAIL=3
+
 
 # Functions
-
 function log() {
-    printf "$1${BOLD}$2${ENDCOLOR}"
+    if [ $1 -e $OK ] then
+        printf "${BOLD}[${GREEN} Ok ${ENDCOLOR}${BOLD}] $2${ENDCOLOR}"
+    elif [ $1 -e $WARN ] then
+        printf "${BOLD}[${YELLOW}Warn${ENDCOLOR}${BOLD}] $2${ENDCOLOR}"
+    elif [ $1 -e $FAIL ] then
+        printf "${BOLD}[${RED}Fail${ENDCOLOR}${BOLD}] $2${ENDCOLOR}"
 }
 
 function change_sh() {
     sudo pacman -S dash
-    log $OK_TAG "Downloaded dash shell..."
+    log $OK "Downloaded dash shell..."
     sudo rm /bin/sh
     sudo ln -s /bin/dash /bin/sh
-    log $OK_TAG "Default shell running enviroment changed to dash"
+    log $OK "Default shell running enviroment changed to dash"
 }
 
 
@@ -89,18 +94,18 @@ sudo pacman -S checkbashisms
 return_value=$(checkbashisms -e)
 if [ $return_value -e 0 ]; then
     if [ "$(find /bin/ -maxdepth 1 -type l -ls /bin/ | grep "/bin/sh -> bash" )" -e 0 ]; then
-        log $WARN_TAG "Default shell is not bash"
+        log $WARN "Default shell is not bash"
         printf "    Continue? [Y/N]"
         read answer
         if [ "$answer" != "${answer#[Yy]}" ] ;then 
             change_sh
         else
-            log $WARN_TAG "The default sh won't be changed"
+            log $WARN "The default sh won't be changed"
         fi
     fi
     change_sh
 else
-    log $OK_TAG "Default shell is already dash"
+    log $OK "Default shell is already dash"
 fi
 
 
