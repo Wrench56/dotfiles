@@ -20,6 +20,9 @@ wrapper() {
     fi
 }
 
-
+# .xinitrc
 wrapper "Make .xinitrc an executable" chmod +x $DOTFILES/.xinitrc
-wrapper "Move .xinitrc to HOME directory" ln -s $DOTFILES/.xinitrc ~/.xinitrc
+wrapper "Link .xinitrc to HOME directory" ln -s $DOTFILES/.xinitrc ~/.xinitrc
+
+# neovim
+wrapper "Link nvim config folder" ln -s $DOTFILES/nvim ~/.config/nvim

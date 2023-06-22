@@ -53,5 +53,8 @@ feh --bg-scale wallpaper.png
 # Download brave browser (might change)
 yay -S brave-bin --noconfirm
 
+# Download neovim
+sudo pacman -S --noconfirm neovim
+
 # System update
 sudo pacman -Syu
