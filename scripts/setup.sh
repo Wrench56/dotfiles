@@ -42,9 +42,12 @@ sudo sed -i "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default/gr
 # Run mkconfig for GRUB
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
+# Clone the dotfiles GitHub repository
+git clone https://github.com/Wrench56/dotfiles
+
 # Download feh & set up wallpaper
 sudo pacman -S --noconfirm feh
-feh --bg-scale wallpaper.png
+feh --bg-scale dotfiles/wallpaper.png
 
 ##########################################
 ################## APPS ##################
