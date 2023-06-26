@@ -26,8 +26,6 @@ sudo pacman -S --noconfirm alacritty
 
 # Get i3 window manager (only install the gnu-free-fonts)
 sudo pacman -S --noconfirm i3 xorg xorg-xdm dmenu i3status ttf-hack
-echo "exec i3" > ~/.xsession
-chmod +x ~/.xsession
 
 # Enable X display manager
 sudo systemctl enable xdm.service
@@ -47,7 +45,7 @@ git clone https://github.com/Wrench56/dotfiles
 
 # Download feh & set up wallpaper
 sudo pacman -S --noconfirm feh
-feh --bg-scale dotfiles/wallpaper.png
+feh --bg-scale ./dotfiles/wallpaper.png
 
 ##########################################
 ################## APPS ##################
