@@ -20,9 +20,15 @@ wrapper() {
     fi
 }
 
+# ly display manager
+wrapper "Link ly config.ini" sudo ln -s $DOTFILES/ly/config.ini /etc/ly/config.ini
+
 # .xinitrc
 wrapper "Make .xinitrc an executable" chmod +x $DOTFILES/.xinitrc
 wrapper "Link .xinitrc to HOME directory" ln -s $DOTFILES/.xinitrc ~/.xinitrc
+
+# .bashrc
+wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
 
 # neovim
 wrapper "Link nvim config folder" ln -s $DOTFILES/nvim ~/.config/nvim
