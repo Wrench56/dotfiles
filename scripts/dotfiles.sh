@@ -21,6 +21,7 @@ wrapper() {
 }
 
 # ly display manager
+wrapper "Remove default ly config.ini" sudo rm /etc/ly/config.ini
 wrapper "Link ly config.ini" sudo ln -s $DOTFILES/ly/config.ini /etc/ly/config.ini
 
 # .xinitrc
@@ -28,6 +29,7 @@ wrapper "Make .xinitrc an executable" chmod +x $DOTFILES/.xinitrc
 wrapper "Link .xinitrc to HOME directory" ln -s $DOTFILES/.xinitrc ~/.xinitrc
 
 # .bashrc
+wrapper "Remove default .bashrc file" rm ~/.bashrc
 wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
 
 # neovim
