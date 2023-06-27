@@ -64,4 +64,4 @@ yay -S brave-bin --noconfirm
 sudo pacman -S --noconfirm neovim
 
 # System update
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
