@@ -25,7 +25,7 @@ rm -rf yay
 yay -S downgrade --noconfirm
 
 # Get i3 window manager (only install the gnu-free-fonts)
-sudo pacman -S --noconfirm i3 xorg dmenu i3status ttf-hack
+sudo pacman -S --noconfirm i3 xorg dmenu i3status
 
 # Fix boot messages disappearing
 sudo sed -i s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service 
@@ -60,8 +60,10 @@ feh --bg-scale ./dotfiles/wallpaper.png
 
 # Get alacritty terminal emulator (I want a lightweight terminal with opaque background)
 sudo pacman -S --noconfirm alacritty
-# Download lightweight clipboard
-sudo pacman -S --noconfirm xclip
+    # Download lightweight clipboard
+    sudo pacman -S --noconfirm xclip
+    # Install hack nerd fonts
+    sudo pacman -S --noconfirm ttf-hack-nerd
 
 # Download brave browser (might change)
 yay -S --noconfirm brave-bin
