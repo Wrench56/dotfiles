@@ -24,9 +24,6 @@ rm -rf yay
 # Download downgrade
 yay -S downgrade --noconfirm
 
-# Get alacritty terminal emulator (I want a lightweight terminal with opaque background)
-sudo pacman -S --noconfirm alacritty
-
 # Get i3 window manager (only install the gnu-free-fonts)
 sudo pacman -S --noconfirm i3 xorg dmenu i3status ttf-hack
 
@@ -45,7 +42,6 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 yes | sudo downgrade 'ly=0.5.3-5' --ala-only
 sudo systemctl enable ly.service
 
-
 # Clone the dotfiles GitHub repository
 git clone https://github.com/Wrench56/dotfiles
 
@@ -62,8 +58,13 @@ feh --bg-scale ./dotfiles/wallpaper.png
 ################## APPS ##################
 ##########################################
 
+# Get alacritty terminal emulator (I want a lightweight terminal with opaque background)
+sudo pacman -S --noconfirm alacritty
+# Download lightweight clipboard
+sudo pacman -S --noconfirm xclip
+
 # Download brave browser (might change)
-yay -S brave-bin --noconfirm
+yay -S --noconfirm brave-bin
 
 # Download neovim
 sudo pacman -S --noconfirm neovim
