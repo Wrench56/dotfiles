@@ -25,7 +25,11 @@ rm -rf yay
 yay -S downgrade --noconfirm
 
 # Get i3 window manager (only install the gnu-free-fonts)
-sudo pacman -S --noconfirm i3 xorg dmenu i3status picom
+sudo pacman -S --noconfirm i3 xorg i3status picom
+
+# Get rofi
+sudo pacman -S --noconfirm rofi
+sudo pacman -S --noconfirm papirus-icon-theme
 
 # Fix boot messages disappearing
 sudo sed -i s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service 
