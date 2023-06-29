@@ -14,7 +14,7 @@ PS1='[\u@\h \W]\$ '
 alias reboot='sudo chvt 1 && sudo reboot'
 alias shutdown='sudo chvt 1 && sudo shutdown -a now'
 
-alias ls='exa'
+alias ls='exa --icons'
 alias ll='ls -ll'
 alias la='ll -a'
 alias l='ls -D'
