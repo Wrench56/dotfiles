@@ -19,13 +19,13 @@ dashboard.setup({
             key = 'u' 
          },
          {
-            desc = ' Files',
+            desc = ' Files',
             group = 'Label',
             action = 'Telescope find_files',
             key = 'f',
          },
          {
-            desc = ' Health',
+            desc = ' Health',
             group = 'DiagnosticHint',
             action = 'checkhealth',
             key = 'h',
