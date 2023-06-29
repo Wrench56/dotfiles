@@ -75,3 +75,8 @@ sudo pacman -S --noconfirm neovim
 
 # System update
 sudo pacman -Syu --noconfirm
+
+# Run dotfiles.sh script
+sleep 1
+cd dotfiles
+./scripts/dotfiles.sh
