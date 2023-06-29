@@ -25,7 +25,7 @@ rm -rf yay
 yay -S downgrade --noconfirm
 
 # Get i3 window manager (only install the gnu-free-fonts)
-sudo pacman -S --noconfirm i3 xorg dmenu i3status
+sudo pacman -S --noconfirm i3 xorg dmenu i3status picom
 
 # Fix boot messages disappearing
 sudo sed -i s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service 
@@ -64,6 +64,8 @@ sudo pacman -S --noconfirm alacritty
     sudo pacman -S --noconfirm xclip
     # Install hack nerd fonts
     sudo pacman -S --noconfirm ttf-hack-nerd
+    # Install xdg-utils (xdg-open)
+    sudo pacman -S --noconfirm xdg-utils
 
 # Download brave browser (might change)
 yay -S --noconfirm brave-bin
