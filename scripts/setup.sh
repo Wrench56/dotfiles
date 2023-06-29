@@ -49,6 +49,11 @@ sudo systemctl enable ly.service
 # Clone the dotfiles GitHub repository
 git clone https://github.com/Wrench56/dotfiles
 
+# Make the dotfiles scripts executable
+rm ./dotfiles/scripts/setup.sh
+chmod +x ./dotfiles/scripts/dotfiles.sh
+chmod +x ./dotfiles/scripts/maintenance.sh
+
 # Download feh & set up wallpaper
 sudo pacman -S --noconfirm feh
 feh --bg-scale ./dotfiles/wallpaper.png
