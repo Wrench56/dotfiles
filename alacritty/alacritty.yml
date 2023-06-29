@@ -30,8 +30,12 @@ window:
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
-  decorations: transparent
-  startup_mode: Fullscreen
+  decorations: full
+  startup_mode: Windowed
+
+  
+  # Background opacity
+  opacity: 0.825
 
   # Window title
   title: Alacritty
@@ -62,60 +66,6 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: false
 
-# Colors (Tomorrow Night Bright)
-colors:
-  # Default colors
-  primary:
-    background: '0xeaeaea'
-    foreground: '0x000000'
-
-    # Bright and dim foreground colors
-    dim_foreground: '0x9a9a9a'
-    bright_foreground: '0xffffff'
-
-  # Cursor colors
-  cursor:
-    text: '0x000000'
-    cursor: '0xffffff'
-
-  # Selection colors
-  selection:
-    text: '0xeaeaea'
-    background: '0x404040'
-
-  # Normal colors
-  normal:
-    black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0x22aa22'
-    yellow:  '0xe6c547'
-    blue:    '0x4444ff'
-    magenta: '0xc397d8'
-    cyan:    '0x40a09a'
-    white:   '0xeaeaea'
-
-  # Bright colors
-  bright:
-    black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x9ec400'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
-    white:   '0xffffff'
-
-  # Dim colors
-  dim:
-    black:   '0x000000'
-    red:     '0x8c3336'
-    green:   '0x7a8530'
-    yellow:  '0x97822e'
-    blue:    '0x506d8f'
-    magenta: '0x80638e'
-    cyan:    '0x497e7a'
-    white:   '0x9a9a9a'
-
   # Indexed Colors
   #
   # The indexed colors include all colors from 16 to 256.
@@ -132,8 +82,6 @@ visual_bell:
   duration: 0
   color: '0xffffff'
 
-# Background opacity
-background_opacity: 0.825
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -172,95 +120,18 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
 
-  url:
-    # URL launcher
-    launcher:
-      program: xdg-open
-      args: []
-
-    modifiers: control
-
-# Mouse bindings
-#
-# Mouse bindings are specified as a list of objects, much like the key
-# bindings further below.
-#
-# Each mouse binding will specify a:
-#
-# - `mouse`:
-#
-#   - Middle
-#   - Left
-#   - Right
-#   - Numeric identifier such as `5`
-#
-# - `action` (see key bindings)
-#
-# And optionally:
-#
-# - `mods` (see key bindings)
-#mouse_bindings:
-#  - { mouse: Middle, action: PasteSelection }
-
-# Key bindings
-#
-# Key bindings are specified as a list of objects. For example, this is the
-# default paste binding:
-#
-# `- { key: V, mods: Control|Shift, action: Paste }`
-#
-# Each key binding will specify a:
-#
-# - `key`: Identifier of the key pressed
-#
-#    - A-Z
-#    - F1-F24
-#    - Key0-Key9
-#
-#    A full list with available key codes can be found here:
-#    https://docs.rs/glutin/*/glutin/event/enum.VirtualKeyCode.html#variants
-#
-#    Instead of using the name of the keys, the `key` field also supports using
-#    the scancode of the desired key. Scancodes have to be specified as a
-#    decimal number. This command will allow you to display the hex scancodes
-#    for certain keys:
-#
-#       `showkey --scancodes`.
-#
-# Then exactly one of:
-#
-# - `chars`: Send a byte sequence to the running application
-#
-#    The `chars` field writes the specified string to the terminal. This makes
-#    it possible to pass escape sequences. To find escape codes for bindings
-#    like `PageUp` (`"\x1b[5~"`), you can run the command `showkey -a` outside
-#    of tmux. Note that applications use terminfo to map escape sequences back
-#    to keys. It is therefore required to update the terminfo when changing an
-#    escape sequence.
-#
-# - `action`: Execute a predefined action
-#
-#   - Copy
-#   - Paste
-#   - PasteSelection
-#   - IncreaseFontSize
-#   - DecreaseFontSize
-#   - ResetFontSize
-#   - ScrollPageUp
-#   - ScrollPageDown
-#   - ScrollLineUp
-#   - ScrollLineDown
-#   - ScrollToTop
-#   - ScrollToBottom
-#   - ClearHistory
-#   - Hide
-#   - Minimize
-#   - Quit
-#   - ToggleFullscreen
-#   - SpawnNewInstance
-#   - ClearLogNotice
-#   - ReceiveChar
-#   - None
+  enabled:
+    regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+             [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+    hyperlinks: true
+    command: xdg-open
+    post_process: true
+    mouse:
+      enabled: true
+      mods: None
+    binding:
+      key: U
+      mods: Control|Shift
 
 key_bindings:
   - { key: V,        mods: Control|Shift, action: Paste            }
