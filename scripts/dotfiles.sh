@@ -34,7 +34,7 @@ wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
 
 # alacritty
 wrapper "Create alacritty config folder" mkdir ~/.config/alacritty
-wrapper "Link alacritty.yml to alacritty directory" ln -s $DOTFILES/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+wrapper "Link alacritty.yml to alacritty directory" ln -s $DOTFILES/alacritty/alacritty.yaml ~/.config/alacritty/alacritty.yaml
 
 # neovim
 wrapper "Link nvim config folder" ln -s $DOTFILES/nvim ~/.config/nvim
