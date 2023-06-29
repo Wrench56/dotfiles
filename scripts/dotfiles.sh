@@ -41,5 +41,10 @@ wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
 wrapper "Create alacritty config folder" mkdir ~/.config/alacritty
 wrapper "Link alacritty.yml to alacritty directory" ln -s $DOTFILES/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
+# rofi
+wrapper "Create rofi config folder" mkdir ~/.config/rofi
+wrapper "Link rofi config file to rofi directory" ln -s $DOTFILES/rofi/config.rasi ~/.config/rofi/config.rasi
+wrapper "Link rofi theme file to rofi directory" ln -s $DOTFILES/rofi/theme.rasi ~/.config/rofi/theme.rasi
+
 # neovim
 wrapper "Link nvim config folder" ln -s $DOTFILES/nvim ~/.config/nvim
