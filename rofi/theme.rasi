@@ -1,7 +1,7 @@
 * {
-  bg: #1e1e2e66;
-  bg-alt: #585b7066;
-  bg-selected: #31324466;
+  bg: #1d202570;
+  bg-alt: #cccccc70;
+  bg-selected: #282c3470;
 
   fg: #cdd6f4;
   fg-alt: #7f849c;
