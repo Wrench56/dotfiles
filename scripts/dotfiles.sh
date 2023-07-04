@@ -34,6 +34,11 @@ wrapper "Link config file to i3 config directory" ln -s $DOTFILES/i3/config ~/.c
 wrapper "Make .xinitrc an executable" chmod +x $DOTFILES/.xinitrc
 wrapper "Link .xinitrc to HOME directory" ln -s $DOTFILES/.xinitrc ~/.xinitrc
 
+# GTK
+wrapper "Make gtk-3.0 directory" mkdir ~/.config/gtk-3.0
+wrapper "Link settings.ini to GTK 3.0 directory" ln -s $DOTFILES/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+wrapper "Link .gtkrc-2.0 to HOME directory" ln -s $DOTFILES/.gtkrc-2.0 ~/.gtkrc-2.0
+
 # .bashrc
 wrapper "Remove default .bashrc file" rm ~/.bashrc
 wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
