@@ -30,6 +30,10 @@ wrapper "Create i3 config directory" mkdir ~/.config/i3/ ~/.config/i3/config
 wrapper "Remove i3 config file" rm ~/.config/i3/config
 wrapper "Link config file to i3 config directory" ln -s $DOTFILES/i3/config ~/.config/i3/config
 
+# picom
+wrapper "Create picom config directory" mkdir ~/.config/picom
+wrapper "Link picom config file to picom directory" ln -s $DOTFILES/picom/picom.conf ~/.config/picom/picom.conf
+
 # .xinitrc
 wrapper "Make .xinitrc an executable" chmod +x $DOTFILES/.xinitrc
 wrapper "Link .xinitrc to HOME directory" ln -s $DOTFILES/.xinitrc ~/.xinitrc
