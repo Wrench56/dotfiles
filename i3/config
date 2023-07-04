@@ -188,3 +188,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+bindsym $mod+e rofi -show drun
+bindsym $mod+d rofi -show window
