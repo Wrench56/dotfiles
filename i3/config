@@ -34,6 +34,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Enable picom
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+
 # Start dunst (notification manager)
 exec_always --no-startup-id dunst
 
