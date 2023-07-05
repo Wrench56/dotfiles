@@ -44,7 +44,7 @@ wrapper "Remove default .bashrc file" rm ~/.bashrc
 wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
 
 # dunst
-wrapper "Remove dunst config folder" rm ~/.config/dunst
+wrapper "Remove dunst config folder" rm -rf ~/.config/dunst
 wrapper "Link dunst config folder" ln -s $DOTFILES/dunst ~/.config/dunst
 
 # alacritty
