@@ -46,6 +46,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 yes | sudo downgrade 'ly=0.5.3-5' --ala-only
 sudo systemctl enable ly.service
 
+# Create user specific systemd service/timer directory
+mkdir ~/.config/systemd ~/.config/systemd/user
+
 # Clone the dotfiles GitHub repository
 git clone https://github.com/Wrench56/dotfiles
 
@@ -53,6 +56,7 @@ git clone https://github.com/Wrench56/dotfiles
 rm ./dotfiles/scripts/setup.sh
 chmod +x ./dotfiles/scripts/dotfiles.sh
 chmod +x ./dotfiles/scripts/maintenance.sh
+chmod +x ./dotfiles/scripts/dunst.sh
 
 # Download feh & set up wallpaper
 sudo pacman -S --noconfirm feh
@@ -60,6 +64,9 @@ feh --bg-scale ./dotfiles/wallpaper.png
 
 # Download dunst
 sudo pacman -S --noconfirm dunst libnotify
+
+# Make ~/.local/bin directory
+mkdir ~/.local/bin
 
 ##########################################
 ################## APPS ##################
@@ -87,3 +94,4 @@ sudo pacman -Syu --noconfirm
 sleep 1
 cd dotfiles
 ./scripts/dotfiles.sh
+./scripts/dunst.sh
