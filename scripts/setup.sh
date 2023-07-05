@@ -58,6 +58,9 @@ chmod +x ./dotfiles/scripts/maintenance.sh
 sudo pacman -S --noconfirm feh
 feh --bg-scale ./dotfiles/wallpaper.png
 
+# Download dunst
+sudo pacman -S --noconfirm dunst libnotify
+
 ##########################################
 ################## APPS ##################
 ##########################################
