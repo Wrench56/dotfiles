@@ -43,6 +43,10 @@ wrapper "Link .gtkrc-2.0 to HOME directory" ln -s $DOTFILES/.gtkrc-2.0 ~/.gtkrc-
 wrapper "Remove default .bashrc file" rm ~/.bashrc
 wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
 
+# dunst
+wrapper "Remove dunst config folder" rm ~/.config/dunst
+wrapper "Link dunst config folder" ln -s $DOTFILES/dunst ~/.config/dunst
+
 # alacritty
 wrapper "Create alacritty config folder" mkdir ~/.config/alacritty
 wrapper "Link alacritty.yml to alacritty directory" ln -s $DOTFILES/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
@@ -53,4 +57,5 @@ wrapper "Link rofi config file to rofi directory" ln -s $DOTFILES/rofi/config.ra
 wrapper "Link rofi theme file to rofi directory" ln -s $DOTFILES/rofi/theme.rasi ~/.config/rofi/theme.rasi
 
 # neovim
+wrapper "Remove nvim config folder" rm -rf ~/.config/nvim
 wrapper "Link nvim config folder" ln -s $DOTFILES/nvim ~/.config/nvim
