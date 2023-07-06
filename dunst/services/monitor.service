@@ -1,0 +1,9 @@
+[Unit]
+Description=Create monitors-connected tmp file
+
+[Service]
+ExecStartPre=/bin/sleep 3
+ExecStart=xrandr | grep -c "[HDMI|VDA|DP]-[0-9] connected" > /tmp/monitors-connected
+
+[Install]
+WantedBy=default.target
