@@ -13,7 +13,7 @@ for file in *; do sed -i "s/@USER/${USERNAME}/" $file; done
 
 # Link dunst/scripts directory to ~/.local/bin/dunst
 if [ -d ~/.local/bin/dunst ]; then rm -rf ~/.local/bin/dunst; fi
-ln -s $DOTFILES/dunst/script ~/.local/bin/dunst
+ln -s $DOTFILES/dunst/scripts ~/.local/bin/dunst
 
 # Link rules
 if [ -f /etc/udev/rules.d/power.rules ]; then sudo rm /etc/udev/rules.d/power.rules; fi
