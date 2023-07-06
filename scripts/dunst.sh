@@ -6,7 +6,7 @@ USERNAME=$(whoami)
 DOTFILES=$(dirname -- "$(realpath -- "$(dirname $(realpath -s $0))")")
 
 # Install acpi
-sudo pacman -S acpi
+sudo pacman -S --noconfirm acpi
 
 # Replace @USER with the current username
 cd $DOTFILES/dunst/scripts
