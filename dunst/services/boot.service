@@ -1,0 +1,8 @@
+[Unit]
+Description=Send notification after boot
+
+[Service]
+ExecStart=notify-send -t 5000 -u low -i boot "System booted" "Welcome aboard!"
+
+[Install]
+WantedBy=default.target
