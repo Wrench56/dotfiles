@@ -2,4 +2,4 @@
 Description=Check whether the battery is running low
 
 [Service]
-ExecStart=/home/@USER/.local/bin/dunst/check-battery.sh
+ExecStart=/home/@USER/.local/bin/dunst/check-battery

@@ -5,11 +5,14 @@
 USERNAME=$(whoami)
 DOTFILES=$(dirname -- "$(realpath -- "$(dirname $(realpath -s $0))")")
 
+# Install acpi
+sudo pacman -S acpi
+
 # Replace @USER with the current username
 cd $DOTFILES/dunst/scripts
-for file in *; do sed -i "s/@USER/${USERNAME}/" $file; done
-cd $DOTFILES/dunst/other
-for file in *; do sed -i "s/@USER/${USERNAME}/" $file; done
+for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
+cd ../other
+for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
 
 # Link dunst/scripts directory to ~/.local/bin/dunst
 if [ -d ~/.local/bin/dunst ]; then rm -rf ~/.local/bin/dunst; fi
@@ -28,3 +31,7 @@ done
 
 # Enable user specific systemd services
 systemctl --user enable battery.timer
+
+# Make scripts executable
+cd ~/.local/bin/dunst
+for file in *; do chmod +x $file; done
