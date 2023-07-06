@@ -8,19 +8,17 @@ DOTFILES=$(dirname -- "$(realpath -- "$(dirname $(realpath -s $0))")")
 # Install acpi
 sudo pacman -S --noconfirm acpi
 
-# Replace @USER with the current username
+# Link dunst/scripts directory to ~/.local/bin/dunst
 cd $DOTFILES/dunst/scripts
 for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
-cd ../rules
-for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
-cd ../services
-for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
 
-# Link dunst/scripts directory to ~/.local/bin/dunst
 if [ -d ~/.local/bin/dunst ]; then rm -rf ~/.local/bin/dunst; fi
 ln -s $DOTFILES/dunst/scripts ~/.local/bin/dunst
 
 # Link rules
+cd ../rules
+for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
+
 for file in *
 do
     if [ -f /etc/udev/rules.d/$file ]; then sudo rm /etc/udev/rules.d/$file; fi
@@ -28,6 +26,9 @@ do
 done
 
 # Link systemd files
+cd ../services
+for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
+
 for file in *
 do
     if [ -f ~/.config/systemd/user/$file ]; then rm ~/.config/systemd/user/$file; fi
@@ -37,6 +38,7 @@ done
 # Enable user specific systemd services
 systemctl --user enable battery.timer
 systemctl --user enable boot.service
+systemctl --user enable monitor.service
 
 # Make scripts executable
 cd ~/.local/bin/dunst
