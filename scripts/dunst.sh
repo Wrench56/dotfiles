@@ -21,8 +21,11 @@ if [ -d ~/.local/bin/dunst ]; then rm -rf ~/.local/bin/dunst; fi
 ln -s $DOTFILES/dunst/scripts ~/.local/bin/dunst
 
 # Link rules
-if [ -f /etc/udev/rules.d/power.rules ]; then sudo rm /etc/udev/rules.d/power.rules; fi
-sudo ln -s $DOTFILES/dunst/other/power.rules /etc/udev/rules.d/power.rules
+for file in *
+do
+    if [ -f /etc/udev/rules.d/$file ]; then sudo rm /etc/udev/rules.d/$file; fi
+    sudo ln -s $DOTFILES/dunst/rules/power.rules /etc/udev/rules.d/power.rules
+done
 
 # Link systemd files
 for file in *
