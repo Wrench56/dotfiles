@@ -28,7 +28,7 @@ sudo ln -s $DOTFILES/dunst/other/power.rules /etc/udev/rules.d/power.rules
 for file in *
 do
     if [ -f ~/.config/systemd/user/$file ]; then rm ~/.config/systemd/user/$file; fi
-    ln -s $file ~/.config/systemd/user/$file
+    ln -s $DOTFILES/dunst/services/$file ~/.config/systemd/user/$file
 done
 
 # Enable user specific systemd services
