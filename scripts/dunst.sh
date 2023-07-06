@@ -11,7 +11,7 @@ sudo pacman -S --noconfirm acpi
 # Replace @USER with the current username
 cd $DOTFILES/dunst/scripts
 for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
-cd ../other
+cd ../rules
 for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
 cd ../services
 for file in *; do sed -i "s/@USER/${USERNAME}/g" $file; done
