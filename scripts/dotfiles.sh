@@ -57,6 +57,8 @@ wrapper "Link dunst icons to /usr/share/icons/" sudo ln -s $DOTFILES/dunst/dunst
 # conky
 wrapper "Remove .conkyrc" rm ~/.conkyrc
 wrapper "Link .conkyrc to HOME directory" ln -s $DOTFILES/.conkyrc ~/.conkyrc
+wrapper "Copy ConkySymbols.ttf in ~/.local/share/fonts directory" cp $DOTFILES/fonts/ConkySymbols.ttf ~/.local/share/fonts/ConkySymbols.ttf
+wrapper "Updating fontconfig cache" fc-cache
 
 # alacritty
 wrapper "Create alacritty config folder" mkdir ~/.config/alacritty
