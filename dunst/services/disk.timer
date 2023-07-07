@@ -1,0 +1,9 @@
+[Unit]
+Description=Check if the disk is almost full
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target
