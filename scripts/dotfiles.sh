@@ -54,6 +54,10 @@ wrapper "Link dunstrc" ln -s $DOTFILES/dunst/dunstrc ~/.config/dunst/dunstrc
 wrapper "Remove dunst icons from /usr/share/icons/" sudo rm -rf /usr/share/icons/dunst-icons
 wrapper "Link dunst icons to /usr/share/icons/" sudo ln -s $DOTFILES/dunst/dunst-icons /usr/share/icons/dunst-icons
 
+# conky
+wrapper "Remove .conkyrc" rm ~/.conkyrc
+wrapper "Link .conkyrc to HOME directory" ln -s $DOTFILES/.conkyrc ~/.conkyrc
+
 # alacritty
 wrapper "Create alacritty config folder" mkdir ~/.config/alacritty
 wrapper "Link alacritty.yml to alacritty directory" ln -s $DOTFILES/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml

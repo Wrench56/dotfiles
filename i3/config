@@ -40,6 +40,9 @@ exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 # Start dunst (notification manager)
 exec_always --no-startup-id dunst
 
+# Start conky
+exec --no-startup-id conky
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
