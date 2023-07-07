@@ -1,0 +1,5 @@
+[Unit]
+Description=Check if the CPU temperature is normal
+
+[Service]
+ExecStart=/home/@USER/.local/bin/dunst/check-temp
