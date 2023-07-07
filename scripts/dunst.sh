@@ -39,6 +39,7 @@ done
 systemctl --user enable battery.timer
 systemctl --user enable disk.timer
 systemctl --user enable temp.timer
+systemctl --user enable updates.timer
 
 # Make scripts executable
 cd ~/.local/bin/dunst

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+NORMAL=$(checkupdates | wc -l)
+AUR=$(yay -Qua | wc -l)
+
+if [ "$(($NORMAL + $AUR))" -ge 20 ]; then
+    notify-send -u normal -i "packages" "Update available" "There are ${NORMAL} updates and ${AUR} AUR updates available"
+fi
