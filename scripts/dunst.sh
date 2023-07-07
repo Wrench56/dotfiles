@@ -38,7 +38,6 @@ done
 # Enable user specific systemd services
 systemctl --user enable battery.timer
 systemctl --user enable boot.service
-systemctl --user enable monitor.service
 
 # Make scripts executable
 cd ~/.local/bin/dunst
