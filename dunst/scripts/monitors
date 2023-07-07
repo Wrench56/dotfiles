@@ -20,4 +20,4 @@ else
     notify-send -u normal -i "monitor" "Monitor connected" "There are ${CURRENT_HDMI_CONNECTED} monitors connected"
 fi
 
-echo $CURRENT_HDMI_CONNECTED > /tmp/hdmi-connected
+echo $CURRENT_HDMI_CONNECTED > /tmp/monitors-connected
