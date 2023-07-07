@@ -81,6 +81,9 @@ sudo pacman -S --noconfirm alacritty
     # Install xdg-utils (xdg-open)
     sudo pacman -S --noconfirm xdg-utils
 
+# Download conky
+sudo pacman -S --noconfirm conky
+
 # Download brave browser (might change)
 yay -S --noconfirm brave-bin
 
