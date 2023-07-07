@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for dir in /sys/class/thermal/thermal_zone*/; do
+    if [ $(cat $dir/type) == "x86_pkg_temp" ]; then
+        if [ $(cat $dir/temp) -ge 75000 ]; then
+            notify-send -u critical -i "fire" "Critical temperature" "Your CPU's temperature is $(cat $dirs/temp | sed 's/\(.\)..$/.\1°C/').\nThat is an abnormal level"
+        fi
+        break
+    fi
+done
