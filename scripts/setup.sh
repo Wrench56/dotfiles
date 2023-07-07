@@ -67,6 +67,8 @@ sudo pacman -S --noconfirm dunst libnotify
 
 # Make ~/.local/bin directory
 mkdir ~/.local/bin
+# Make ~/.local/share/fonts directory
+mkdir ~/.local/share/fonts
 
 ##########################################
 ################## APPS ##################
