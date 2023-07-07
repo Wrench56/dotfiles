@@ -1,0 +1,5 @@
+[Unit]
+Description=Check if the disk is almost full
+
+[Service]
+ExecStart=/home/@USER/.local/bin/dunst/check-disk
