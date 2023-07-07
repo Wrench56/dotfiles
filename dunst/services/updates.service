@@ -1,0 +1,5 @@
+[Unit]
+Description=Check if there are updates available
+
+[Service]
+ExecStart=/home/@USER/.local/bin/dunst/check-updates

@@ -1,0 +1,9 @@
+[Unit]
+Description=Check if there are updates available
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target
