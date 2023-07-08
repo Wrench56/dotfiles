@@ -67,10 +67,12 @@ sudo pacman -S --noconfirm dunst libnotify
 
 # Download zsh
 sudo pacman -S --noconfirm zsh
-    # Download zsh-syntax-highlighting
-    sudo pacman -S --noconfirm zsh-syntax-highlighting
     # Make ~/.cache/zsh directory
     mkdir ~/.cache/zsh
+    # Download zsh-syntax-highlighting
+    sudo pacman -S --noconfirm zsh-syntax-highlighting
+    # Download powerlevel10k
+    yay -S --noconfirm zsh-theme-powerlevel10k-git
 
 # Make ~/.local/bin directory
 mkdir ~/.local/bin
