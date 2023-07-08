@@ -47,6 +47,10 @@ wrapper "Link .gtkrc-2.0 to HOME directory" ln -s $DOTFILES/.gtkrc-2.0 ~/.gtkrc-
 wrapper "Remove default .bashrc file" rm ~/.bashrc
 wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
 
+# aliases
+wrapper "Remove existing shell aliases" rm ~/.local/aliases
+wrapper "Link shell aliases to ~/.local" link -s $DOTFILES/shell/aliases ~/.local/aliases
+
 # dunst
 wrapper "Remove dunst config folder" rm -rf ~/.config/dunst
 wrapper "Create dunst config folder" mkdir ~/.config/dunst
