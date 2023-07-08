@@ -65,6 +65,13 @@ feh --bg-scale ./dotfiles/wallpaper.png
 # Download dunst
 sudo pacman -S --noconfirm dunst libnotify
 
+# Download zsh
+sudo pacman -S --noconfirm zsh
+    # Download zsh-syntax-highlighting
+    sudo pacman -S --noconfirm zsh-syntax-highlighting
+    # Make ~/.cache/zsh directory
+    mkdir ~/.cache/zsh
+
 # Make ~/.local/bin directory
 mkdir ~/.local/bin
 # Make ~/.local/share/fonts directory
