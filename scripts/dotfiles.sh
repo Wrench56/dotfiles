@@ -53,7 +53,7 @@ wrapper "Link .zshrc to HOME directory" ln -s $DOTFILES/.zshrc ~/.zshrc
 
 # aliases
 wrapper "Remove existing shell aliases" rm ~/.local/aliases
-wrapper "Link shell aliases to ~/.local" link -s $DOTFILES/shell/aliases ~/.local/aliases
+wrapper "Link shell aliases to ~/.local" ln -s $DOTFILES/shell/aliases ~/.local/aliases
 
 # dunst
 wrapper "Remove dunst config folder" rm -rf ~/.config/dunst
