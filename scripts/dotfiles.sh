@@ -47,6 +47,11 @@ wrapper "Make gtk-3.0 directory" mkdir ~/.config/gtk-3.0
 wrapper "Link settings.ini to GTK 3.0 directory" ln -s $DOTFILES/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 wrapper "Link .gtkrc-2.0 to HOME directory" ln -s $DOTFILES/.gtkrc-2.0 ~/.gtkrc-2.0
 
+# i3lock-color
+wrapper "Remove ~/.local/bin/lock" rm ~/.local/bin/lock
+wrapper "Link i3lock-color executable to ~/.local/bin/lock" ln -s $DOTFILES/lock ~/.local/bin/lock
+wrapper "Make ~/.local/bin/lock an executable" chmod +x ~/.local/bin/lock
+
 # .bashrc
 wrapper "Remove default .bashrc file" rm ~/.bashrc
 wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
