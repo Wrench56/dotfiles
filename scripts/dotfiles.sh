@@ -38,6 +38,10 @@ wrapper "Link picom config file to picom directory" ln -s $DOTFILES/picom/picom.
 wrapper "Make .xinitrc an executable" chmod +x $DOTFILES/.xinitrc
 wrapper "Link .xinitrc to HOME directory" ln -s $DOTFILES/.xinitrc ~/.xinitrc
 
+# .Xresources
+wrapper "Remove .Xresources" rm ~/.Xresources
+wrapper "Link .Xresources to HOME directory" ln -s $DOTFILES/.Xresources ~/.Xresources
+
 # GTK
 wrapper "Make gtk-3.0 directory" mkdir ~/.config/gtk-3.0
 wrapper "Link settings.ini to GTK 3.0 directory" ln -s $DOTFILES/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
