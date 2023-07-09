@@ -14,8 +14,11 @@ alias ls='exa --icons'
 alias ll='ls -ll'
 alias la='ll -a'
 alias l='ls -D'
+alias grep='grep --color=auto'
 
 alias pacman='sudo pacman'
 
 alias ..='cd ..'
 alias mkdir='mkdir -pv'
+
+alias lock='~/.local/bin/lock'
