@@ -50,6 +50,7 @@ wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc
 # .zshrc
 wrapper "Remove .zshrc file" rm ~/.zshrc
 wrapper "Link .zshrc to HOME directory" ln -s $DOTFILES/.zshrc ~/.zshrc
+wrapper "Link zsh config directory to ~/.config/zsh " ln -s $DOTFILES/zsh ~/.config/zsh
 
 # aliases
 wrapper "Remove existing shell aliases" rm ~/.local/aliases
