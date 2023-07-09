@@ -140,7 +140,7 @@ live_config_reload: false
 
 # Shell
 shell:
-  program: /bin/bash
+  program: /bin/zsh
   args:
     - --login
 
