@@ -78,6 +78,8 @@ sudo pacman -S --noconfirm zsh
 mkdir ~/.local/bin
 # Make ~/.local/share/fonts directory
 mkdir ~/.local/share/fonts
+# Make ~/.cache/bash directory
+mkdir ~/.cache/bash
 
 ##########################################
 ################## APPS ##################
