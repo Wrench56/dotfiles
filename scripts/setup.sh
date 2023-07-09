@@ -60,7 +60,7 @@ chmod +x ./dotfiles/scripts/dunst.sh
 
 # Download feh & set up wallpaper
 sudo pacman -S --noconfirm feh
-feh --bg-scale ./dotfiles/wallpaper.png
+feh --bg-fill ./dotfiles/wallpaper.png
 
 # Download dunst
 sudo pacman -S --noconfirm dunst libnotify
