@@ -14,3 +14,8 @@ alias ls='exa --icons'
 alias ll='ls -ll'
 alias la='ll -a'
 alias l='ls -D'
+
+alias pacman='sudo pacman'
+
+alias ..='cd ..'
+alias mkdir='mkdir -pv'
