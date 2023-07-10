@@ -49,7 +49,7 @@ wrapper "Link .gtkrc-2.0 to HOME directory" ln -s $DOTFILES/.gtkrc-2.0 ~/.gtkrc-
 
 # i3lock-color
 wrapper "Remove ~/.local/bin/lock" rm ~/.local/bin/lock
-wrapper "Link i3lock-color executable to ~/.local/bin/lock" ln -s $DOTFILES/lock ~/.local/bin/lock
+wrapper "Link i3lock-color executable to ~/.local/bin/lock" ln -s $DOTFILES/i3lock/lock ~/.local/bin/lock
 wrapper "Make ~/.local/bin/lock an executable" chmod +x ~/.local/bin/lock
 
 # .bashrc
