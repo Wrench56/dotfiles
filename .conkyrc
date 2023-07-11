@@ -56,11 +56,7 @@ ${color1}${goto 35}Kernel : ${color}$kernel on $machine
 
 
 ${color1}${font ConkySymbols:size=16}f${font} ${voffset -10} System» $hr${color}
-${color1}${goto 35}Core 1 : ${color}${freq_g 1}GHz ${alignr}${cpu cpu0}% ${cpubar cpu0 4,100}
-${color1}${goto 35}Core 2 : ${color}${freq_g 2}GHz ${alignr}${cpu cpu1}% ${cpubar cpu1 4,100}
-${color1}${goto 35}Core 3 : ${color}${freq_g 3}GHz ${alignr}${cpu cpu2}% ${cpubar cpu2 4,100}
-${color1}${goto 35}Core 4 : ${color}${freq_g 4}GHz ${alignr}${cpu cpu3}% ${cpubar cpu3 4,100}
-
+@CPU_CORES
 ${color1}${goto 35}Uptime : ${color}$uptime_short ${alignr}${color1}Load  : ${color}${loadavg}
 
 
@@ -92,9 +88,9 @@ ${goto 35}
 
 
 ${color1}${font ConkySymbols:size=16}b${font} ${voffset -10} Wireless» $hr${color}
-${color1}${goto 35}SSID          : ${color}${wireless_essid wlan0} ${color1}${alignr}Signal: ${color}${wireless_link_qual_perc wlan0}% ${wireless_link_bar 4,100 wlan0}
-${color1}${goto 35}Bitrate       : ${color}${wireless_bitrate wlan0}
-${color1}${goto 35}Total Down/Up : ${color}${totaldown wlan0}/${totalup wlan0} 
-${color1}${goto 35}Speed Down/Up : ${color}${downspeed wlan0}/${upspeed wlan0}
+${color1}${goto 35}SSID          : ${color}${wireless_essid @NETIF} ${color1}${alignr}Signal: ${color}${wireless_link_qual_perc @NETIF}% ${wireless_link_bar 4,100 @NETIF}
+${color1}${goto 35}Bitrate       : ${color}${wireless_bitrate @NETIF}
+${color1}${goto 35}Total Down/Up : ${color}${totaldown @NETIF}/${totalup @NETIF} 
+${color1}${goto 35}Speed Down/Up : ${color}${downspeed @NETIF}/${upspeed @NETIF}
 
 ]]
