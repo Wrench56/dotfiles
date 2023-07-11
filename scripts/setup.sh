@@ -117,4 +117,3 @@ sudo pacman -Syu --noconfirm
 sleep 1
 cd dotfiles
 ./scripts/dotfiles.sh
-./scripts/dunst.sh
