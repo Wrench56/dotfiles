@@ -97,10 +97,11 @@ sudo pacman -S --noconfirm alacritty
 # Download conky
 sudo pacman -S --noconfirm conky
 
-# Download i3lock-color
+# Download i3lock-color & xautolock
 sudo pacman -S --noconfirm --needed autoconf cairo fontconfig gcc libev libjpeg-turbo libxinerama libxkbcommon-x11 libxrandr pam pkgconf xcb-util-image xcb-util-xrm
 sudo pacman -R --noconfirm i3lock
 yay -S --noconfirm i3lock-color
+sudo pacman -S xautolock
 
 # Download brave browser (might change)
 yay -S --noconfirm brave-bin
