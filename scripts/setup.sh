@@ -54,9 +54,10 @@ git clone https://github.com/Wrench56/dotfiles
 
 # Make the dotfiles scripts executable
 rm ./dotfiles/scripts/setup.sh
-chmod +x ./dotfiles/scripts/dotfiles.sh
-chmod +x ./dotfiles/scripts/maintenance.sh
-chmod +x ./dotfiles/scripts/dunst.sh
+for file in ./dotfiles/scripts/*
+do
+    chmod +x $file
+done
 
 # Download feh & set up wallpaper
 sudo pacman -S --noconfirm feh
