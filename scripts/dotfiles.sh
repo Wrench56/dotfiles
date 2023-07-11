@@ -72,6 +72,7 @@ wrapper "Link shell aliases to ~/.local" ln -s $DOTFILES/shell/aliases ~/.local/
 wrapper "Remove dunst config folder" rm -rf ~/.config/dunst
 wrapper "Create dunst config folder" mkdir ~/.config/dunst
 wrapper "Link dunstrc" ln -s $DOTFILES/dunst/dunstrc ~/.config/dunst/dunstrc
+wrapper "Run dunst.sh script" $DOTFILES/scripts/dunst.sh
 wrapper "Remove dunst icons from /usr/share/icons/" sudo rm -rf /usr/share/icons/dunst-icons
 wrapper "Link dunst icons to /usr/share/icons/" sudo ln -s $DOTFILES/dunst/dunst-icons /usr/share/icons/dunst-icons
 
