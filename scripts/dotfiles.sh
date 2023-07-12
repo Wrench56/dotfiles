@@ -55,6 +55,14 @@ wrapper "Remove ~/.local/bin/lock-notify" rm ~/.local/bin/lock-notify
 wrapper "Link i3lock-color executable to ~/.local/bin/lock-notify" ln -s $DOTFILES/i3lock/lock-notify ~/.local/bin/lock-notify
 wrapper "Make ~/.local/bin/lock an executable" chmod +x ~/.local/bin/lock-notify
 
+# i3blocks
+wrapper "Make i3blocks config directory" mkdir ~/.config/i3blocks
+wrapper "Remove i3blocks config" rm ~/.config/i3blocks/config
+wrapper "Link i3blocks config" ln -s $DOTFILES/i3blocks/config ~/.config/i3blocks/config
+wrapper "Remove i3blocks scripts directory" rm -rf ~/.local/bin/i3blocks
+wrapper "Link i3blocks scripts directory" ln -s $DOTFILES/i3blocks/scripts ~/.local/bin/i3blocks
+wrapper "Make i3blocks scripts executable" for file in ~/.local/bin/i3blocks/*; do chmod +x $file; done
+
 # .bashrc
 wrapper "Remove default .bashrc file" rm ~/.bashrc
 wrapper "Link .bashrc to HOME directory" ln -s $DOTFILES/.bashrc ~/.bashrc

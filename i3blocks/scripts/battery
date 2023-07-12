@@ -1,0 +1,34 @@
+#!/bin/sh
+
+BATTERY_LEVEL=$(acpi -b | grep -P -o -m1 "[0-9]+(?=%)")
+BATTERY_CHARGING=$(acpi -b | grep -o -c -m1 "Discharging" || true)
+
+if [ $BATTERY_CHARGING -eq 1 ]
+then
+    ICON=󰂄
+elif [ $BATTERY_LEVEL -eq 100 ]
+then
+    ICON=󰁹
+elif [ $BATTERY_LEVEL -ge 70 ]
+then
+    ICON=󰂀
+elif [ $BATTERY_LEVEL -ge 50 ]
+then
+    ICON=󰁾
+elif [ $BATTERY_LEVEL -ge 30 ]
+then
+    ICON=󰁼
+else
+    ICON=󰂃
+    COLOR=#E06C75
+fi
+
+# full_text
+echo $ICON $BATTERY_LEVEL%
+# short_text
+echo $ICON $BATTERY_LEVEL%
+# color
+if [ -z ${COLOR+x} ]
+then
+    echo $COLOR
+fi
