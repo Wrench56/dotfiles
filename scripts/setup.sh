@@ -50,10 +50,11 @@ sudo systemctl enable ly.service
 mkdir ~/.config/systemd ~/.config/systemd/user
 
 # Configure bluetooth
-sudo pacman -S --noconfirm bluez bluez-utils
+sudo pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
 # Enable btusb module if not already loaded
 if [ lsmod | grep -c "^btusb" ]; then modprobe btusb; fi
-sudo systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
+sudo systemctl --user enable pulseaudio
 
 # Clone the dotfiles GitHub repository
 git clone https://github.com/Wrench56/dotfiles
