@@ -2,6 +2,7 @@
 
 BATTERY_LEVEL=$(acpi -b | grep -P -o -m1 "[0-9]+(?=%)")
 BATTERY_CHARGING=$(acpi -b | grep -o -c -m1 "Charging" || true)
+COLOR=0
 
 if [ $BATTERY_CHARGING -eq 1 ]
 then
@@ -28,7 +29,7 @@ echo $ICON $BATTERY_LEVEL%
 # short_text
 echo $ICON $BATTERY_LEVEL%
 # color
-if [ -z ${COLOR+x} ]
+if [ $COLOR != 0 ]
 then
     echo $COLOR
 fi
