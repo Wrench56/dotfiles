@@ -27,7 +27,7 @@ wrapper() {
 # Parameters:
 #   $1 - Path
 make_executables() {
-    for file in $($1)
+    for file in $1
     do
         chmod +x $file
     done
@@ -74,7 +74,7 @@ wrapper "Remove i3blocks config" rm ~/.config/i3blocks/config
 wrapper "Link i3blocks config" ln -s $DOTFILES/i3blocks/config ~/.config/i3blocks/config
 wrapper "Remove i3blocks scripts directory" rm -rf ~/.local/bin/i3blocks
 wrapper "Link i3blocks scripts directory" ln -s $DOTFILES/i3blocks/scripts ~/.local/bin/i3blocks
-wrapper "Make i3blocks scripts executable" make_executables "~/.local/bin/i3blocks/*"
+wrapper "Make i3blocks scripts executable" make_executables "$HOME/.local/bin/i3blocks/*"
 
 # .bashrc
 wrapper "Remove default .bashrc file" rm ~/.bashrc
