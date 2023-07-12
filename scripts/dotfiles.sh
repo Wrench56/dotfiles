@@ -10,6 +10,10 @@ GREEN="\e[32m"
 BOLD="\033[1m"
 ENDCOLOR="\e[0m"
 
+# Parameters:
+#   $1 - Label
+#   $2 - Command
+
 wrapper() {
     output=$(${@:2} 2>&1)
     if [[ $? -eq 0 ]]
@@ -18,6 +22,15 @@ wrapper() {
     else
         printf "${BOLD}[${RED}Fail${ENDCOLOR}${BOLD}] $1${ENDCOLOR}\n       ${BOLD}${RED}Error${ENDCOLOR} $output\n"
     fi
+}
+
+# Parameters:
+#   $1 - Path
+make_executables() {
+    for file in $($1)
+    do
+        chmod +x $file
+    done
 }
 
 # ly display manager
@@ -61,7 +74,7 @@ wrapper "Remove i3blocks config" rm ~/.config/i3blocks/config
 wrapper "Link i3blocks config" ln -s $DOTFILES/i3blocks/config ~/.config/i3blocks/config
 wrapper "Remove i3blocks scripts directory" rm -rf ~/.local/bin/i3blocks
 wrapper "Link i3blocks scripts directory" ln -s $DOTFILES/i3blocks/scripts ~/.local/bin/i3blocks
-wrapper "Make i3blocks scripts executable" for file in ~/.local/bin/i3blocks/*; do chmod +x $file; done
+wrapper "Make i3blocks scripts executable" make_executables "~/.local/bin/i3blocks/*"
 
 # .bashrc
 wrapper "Remove default .bashrc file" rm ~/.bashrc
