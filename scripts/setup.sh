@@ -49,6 +49,12 @@ sudo systemctl enable ly.service
 # Create user specific systemd service/timer directory
 mkdir ~/.config/systemd ~/.config/systemd/user
 
+# Configure bluetooth
+sudo pacman -S --noconfirm bluez bluez-utils
+# Enable btusb module if not already loaded
+if [ lsmod | grep -c "^btusb" ]; then modprobe btusb; fi
+sudo systemctl start bluetooth.service
+
 # Clone the dotfiles GitHub repository
 git clone https://github.com/Wrench56/dotfiles
 

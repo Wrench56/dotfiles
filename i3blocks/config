@@ -1,3 +1,9 @@
 [battery]
 command=~/.local/bin/i3blocks/battery
-interval=60
+interval=30
+
+[bluetooth]
+full_text=
+short_text=
+color=#0082FC
+command=~/.local/bin/rofi/rofi-bluetooth

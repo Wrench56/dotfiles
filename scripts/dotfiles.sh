@@ -114,7 +114,7 @@ wrapper "Link rofi config file to rofi directory" ln -s $DOTFILES/rofi/config.ra
 wrapper "Link rofi theme file to rofi directory" ln -s $DOTFILES/rofi/theme.rasi ~/.config/rofi/theme.rasi
 wrapper "Remove rofi menus" rm -rf ~/.local/bin/rofi
 wrapper "Link rofi menus to ~/.local/bin/rofi" ln -s $DOTFILES/rofi/menus ~/.local/bin/rofi
-wrapper "Make rofi menus executable" make_executables "$HOME/.local/bin/rofi/*"
+wrapper "Make rofi menus executable" make_executables "$HOME/.local/bin/rofi/rofi-*"
 
 # neovim
 wrapper "Remove nvim config folder" rm -rf ~/.config/nvim
