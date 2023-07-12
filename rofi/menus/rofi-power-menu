@@ -13,18 +13,20 @@ set -e
 set -u
 
 # All supported choices
-all=(shutdown reboot suspend logout)
+all=(shutdown reboot suspend logout lockscreen)
 
 # By default, show all (i.e., just copy the array)
 show=("${all[@]}")
 
 declare -A texts
+texts[lockscreen]="lock screen"
 texts[logout]="log out"
 texts[suspend]="suspend"
 texts[reboot]="reboot"
 texts[shutdown]="shut down"
 
 declare -A icons
+icons[lockscreen]="\Uf033e"
 icons[logout]="\Uf0343"
 icons[suspend]="\Uf04b2"
 icons[reboot]="\Uf0709"
@@ -32,6 +34,7 @@ icons[shutdown]="\Uf0425"
 icons[cancel]="\Uf0156"
 
 declare -A actions
+actions[lockscreen]="xautolock -locknow"
 actions[logout]="pkill -KILL -u $USER"
 actions[suspend]="systemctl suspend"
 actions[reboot]="systemctl reboot"
