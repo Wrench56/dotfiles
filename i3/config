@@ -197,3 +197,4 @@ bar {
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+t exec --no-startup-id rofi -show window
+bindsym $mod+p exec --no-startup-id rofi -show power-menu -modi power-menu:~/.local/bin/rofi/rofi-power-menu
