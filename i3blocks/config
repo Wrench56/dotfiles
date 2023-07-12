@@ -1,0 +1,3 @@
+[battery]
+command=~/.local/bin/i3blocks/battery
+interval=60
