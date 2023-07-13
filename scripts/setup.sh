@@ -119,6 +119,9 @@ yay -S --noconfirm brave-bin
 # Download neovim
 sudo pacman -S --noconfirm neovim
 
+# Download mc
+sudo pacman -S --noconfirm mc
+
 # System update
 sudo pacman -Syu --noconfirm
 
