@@ -7,7 +7,8 @@ command=~/.local/bin/i3blocks/memory
 interval=5
 
 [sound]
-command=if [ $button ]; then ~/.local/bin/i3blocks/volume 1; else ~/.local/bin/i3blocks/sound 0; fi
+command=if [ $button ]; then ~/.local/bin/i3blocks/volume 1; else ~/.local/bin/i3blocks/volume 0; fi
+interval=5
 
 [battery]
 command=~/.local/bin/i3blocks/battery
