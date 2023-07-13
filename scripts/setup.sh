@@ -81,6 +81,8 @@ sudo pacman -S --noconfirm zsh
     sudo pacman -S --noconfirm zsh-syntax-highlighting
     # Download powerlevel10k
     yay -S --noconfirm zsh-theme-powerlevel10k-git
+    # Download zsh-shift-select
+    sudo git clone https://github.com/jirutka/zsh-shift-select /usr/share/zsh/plugins/zsh-shift-select
 
 # Make ~/.local/bin directory
 mkdir ~/.local/bin
