@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MEMORY_USAGE=$(free -m | awk 'NR==2{printf "%.2f"}, $3*100/$2')
+MEMORY_USAGE=$(free -m | awk 'NR==2{printf "%.0f", $3*100/$2'})
 COLOR=0
 
 if [ $MEMORY_USAGE -ge 90 ]
@@ -11,8 +11,8 @@ then
     COLOR=#E06C75
 fi
 
-echo " $MEMORY_USAGE%"
-echo " $MEMORY_USAGE%"
+echo " ${MEMORY_USAGE}%"
+echo " ${MEMORY_USAGE}%"
 
 if [ $COLOR -ne 0 ]
 then
