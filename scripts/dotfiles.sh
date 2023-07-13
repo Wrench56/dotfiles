@@ -128,4 +128,7 @@ wrapper "Link nvim config folder" ln -s $DOTFILES/nvim ~/.config/nvim
 
 # mc (Midnight Commander)
 wrapper "Remove mc config folder" rm -rf ~/.config/mc
-wrapper "Link mc config folder" ln -s $DOTFILES/mc ~/.config/mc
+wrapper "Create mc config folder" mkdir ~/.config/mc
+wrapper "Link mc ini file" ln -s $DOTFILES/mc/ini ~/.config/mc/ini
+wrapper "Remove ~/.local/share/mc/skins" rm -rf ~/.local/share/mc/skins
+wrapper "Link mc skins folder" ln -s $DOTFILES/mc/skins ~/.local/share/mc/skins
