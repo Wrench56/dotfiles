@@ -168,8 +168,17 @@ bindsym $mod+r exec --no-startup-id rofi -show window
 bindsym $mod+p exec --no-startup-id rofi -show power-menu -modi power-menu:~/.local/bin/rofi/rofi-power-menu
 
 # Scratchpads
-bindsym $mod+t [class="terminal"] scratchpad show; move position center
-bindsym $mod+f [class="fm"] scratchpad show; move position center
+bindsym $mod+t [class="terminal"] scratchpad show; [class="terminal"] move position center
+bindsym $mod+f [class="fm"] scratchpad show; [class="fm"] move position center
 
-exec --no-startup-id alacritty --class terminal,terminal -e neofetch
+for_window [class="terminal"] floating enable
+for_window [class="terminal"] resize set 960 640
+for_window [class="terminal"] move scratchpad
+for_window [class="terminal"] border pixel 3
+exec --no-startup-id alacritty --class terminal,terminal
+
+for_window [class="fm"] floating enable
+for_window [class="fm"] resize set 960 640
+for_window [class="fm"] move scratchpad
+for_window [class="fm"] border pixel 3
 exec --no-startup-id alacritty --class fm,fm -e mc
