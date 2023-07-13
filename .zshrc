@@ -15,9 +15,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Keybinds
-bindkey "^[[H"  beginning-of-line # Home
-bindkey "^[[F"  end-of-line       # End
-bindkey "^[[3~" delete-char       # Delete
+source ~/local/keybinds
 
 # Source aliases
 source ~/.local/aliases

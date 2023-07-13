@@ -90,6 +90,10 @@ wrapper "Link zsh config directory to ~/.config/zsh " ln -s $DOTFILES/zsh ~/.con
 wrapper "Remove existing shell aliases" rm ~/.local/aliases
 wrapper "Link shell aliases to ~/.local" ln -s $DOTFILES/shell/aliases ~/.local/aliases
 
+# keybinds
+wrapper "Remove existing shell keybinds" rm ~/.local/keybinds
+wrapper "Link shell keybinds to ~/.local" ln -s $DOTFILES/shell/keybinds ~/.local/keybinds
+
 # dunst
 wrapper "Remove dunst config folder" rm -rf ~/.config/dunst
 wrapper "Create dunst config folder" mkdir ~/.config/dunst
