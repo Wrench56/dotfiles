@@ -13,7 +13,7 @@ color=#0082FC
 command=~/.local/bin/rofi/rofi-bluetooth > /dev/null
 
 [wifi]
-command=if [ $button ]; then ~/.local/bin/rofi/rofi-wifi-menu; else ~/.local/bin/i3blocks/battery; fi
+command=if [ $button ]; then ~/.local/bin/rofi/rofi-wifi-menu; else ~/.local/bin/i3blocks/wifi; fi
 interval=30
 
 [battery]
