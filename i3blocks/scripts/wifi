@@ -1,0 +1,14 @@
+#!/bin/sh
+
+wget -q --spider http://www.google.com
+
+if [ $? -eq 0 ]; then
+    # Online
+    echo 󰖩
+    echo 󰖩
+else
+    # Offline
+    echo 󰖪
+    echo 󰖪
+    echo #E06C75
+fi
