@@ -1,0 +1,36 @@
+bindkey -rp ''
+
+bindkey "^[[H"      beginning-of-line # Home
+bindkey "^[[F"      end-of-line       # End
+bindkey "^[[3~"     delete-char       # Delete
+bindkey "^[[1;5C"   forward-word      # Ctrl + Right arrow
+bindkey "^[[1;5D"   backward-word     # Ctrl + Left arrow
+
+
+bindkey "^L" clear-screen
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
+bindkey "^U" kill-whole-line
+bindkey "^X^K" kill-buffer
+bindkey "^[OA" up-line-or-history
+bindkey "^[OB" down-line-or-history
+bindkey "^[OC" forward-char
+bindkey "^[OD" backward-char
+bindkey "^[W" copy-region-as-kill
+bindkey "^[[101;6u" shift-select::end-of-line
+bindkey "^[[1;2A" shift-select::up-line
+bindkey "^[[1;2B" shift-select::down-line
+bindkey "^[[1;2C" shift-select::forward-char
+bindkey "^[[1;2D" shift-select::backward-char
+bindkey "^[[1;2F" shift-select::end-of-line
+bindkey "^[[1;2H" shift-select::beginning-of-line
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;6C" shift-select::forward-word
+bindkey "^[[1;6D" shift-select::backward-word
+bindkey "^[[1;6F" shift-select::end-of-buffer
+bindkey "^[[1;6H" shift-select::beginning-of-buffer
+bindkey "^[[200~" bracketed-paste
+bindkey "^[[3~" delete-char
+bindkey "^[[97;6u" shift-select::beginning-of-line
+bindkey -R " "-"~" self-insert
+bindkey -R "\M-^@"-"\M-^?" self-insert
