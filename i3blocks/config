@@ -6,6 +6,13 @@ interval=5
 command=~/.local/bin/i3blocks/memory
 interval=5
 
+[sound]
+command=if [ $button ]; then ~/.local/bin/i3blocks/volume 1; else ~/.local/bin/i3blocks/sound 0; fi
+
+[battery]
+command=~/.local/bin/i3blocks/battery
+interval=30
+
 [bluetooth]
 full_text=
 short_text=
@@ -14,10 +21,6 @@ command=~/.local/bin/rofi/rofi-bluetooth > /dev/null
 
 [wifi]
 command=if [ $button ]; then echo "󱛇"; ~/.local/bin/rofi/rofi-wifi-menu > /dev/null; ~/.local/bin/i3blocks/wifi; else ~/.local/bin/i3blocks/wifi; fi
-interval=30
-
-[battery]
-command=~/.local/bin/i3blocks/battery
 interval=30
 
 [date]
