@@ -10,7 +10,7 @@ sudo pacman -Sy --noconfirm pacman-contrib
 sudo systemctl enable paccache.timer
 
 # Get some frequently used packages
-sudo pacman -S --noconfirm neofetch htop git nano man-db exa
+sudo pacman -S --noconfirm neofetch htop git nano man-db exa wget
 
 # Get yay AUR package helper
 sudo pacman -S --needed --noconfirm git base-devel
