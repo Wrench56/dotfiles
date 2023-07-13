@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MEMORY_USAGE=$(free -m | awk 'NR==2{printf "%.0f", $3*100/$2'})
+MEMORY_USAGE=$(free -m | awk 'NR==2{printf "%.0f", $3*100/$2}')
 COLOR=0
 
 if [ $MEMORY_USAGE -ge 90 ]
