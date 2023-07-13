@@ -29,7 +29,7 @@ wrapper() {
 make_executables() {
     for file in $1
     do
-        chmod +x $file
+        wrapper "    Run chmod on $file" chmod +x $file
     done
 }
 
@@ -74,7 +74,8 @@ wrapper "Remove i3blocks config" rm ~/.config/i3blocks/config
 wrapper "Link i3blocks config" ln -s $DOTFILES/i3blocks/config ~/.config/i3blocks/config
 wrapper "Remove i3blocks scripts directory" rm -rf ~/.local/bin/i3blocks
 wrapper "Link i3blocks scripts directory" ln -s $DOTFILES/i3blocks/scripts ~/.local/bin/i3blocks
-wrapper "Make i3blocks scripts executable" make_executables "$HOME/.local/bin/i3blocks/*"
+printf "       ${BOLD}Make i3blocks scripts executable:${ENDCOLOR}\n" 
+make_executables "$HOME/.local/bin/i3blocks/*"
 
 # .bashrc
 wrapper "Remove default .bashrc file" rm ~/.bashrc
@@ -114,7 +115,8 @@ wrapper "Link rofi config file to rofi directory" ln -s $DOTFILES/rofi/config.ra
 wrapper "Link rofi theme file to rofi directory" ln -s $DOTFILES/rofi/theme.rasi ~/.config/rofi/theme.rasi
 wrapper "Remove rofi menus" rm -rf ~/.local/bin/rofi
 wrapper "Link rofi menus to ~/.local/bin/rofi" ln -s $DOTFILES/rofi/menus ~/.local/bin/rofi
-wrapper "Make rofi menus executable" make_executables "$HOME/.local/bin/rofi/rofi-*"
+printf "       ${BOLD}Make rofi menus executable:${ENDCOLOR}\n"
+make_executables "$HOME/.local/bin/rofi/rofi-*"
 
 # neovim
 wrapper "Remove nvim config folder" rm -rf ~/.config/nvim
