@@ -1,3 +1,11 @@
+[cpu]
+command=~/.local/bin/i3blocks/cpu
+interval=5
+
+[memory]
+command=~/.local/bin/i3blocks/memory
+interval=5
+
 [bluetooth]
 full_text=
 short_text=
