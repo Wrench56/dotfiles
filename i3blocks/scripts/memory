@@ -5,16 +5,16 @@ COLOR=0
 
 if [ $MEMORY_USAGE -ge 90 ]
 then
-    COLOR=#E5C07B
+    COLOR=#E06C75
 elif [ $MEMORY_USAGE -ge 80 ]
 then
-    COLOR=#E06C75
+    COLOR=#E5C07B
 fi
 
 echo " ${MEMORY_USAGE}%"
 echo " ${MEMORY_USAGE}%"
 
-if [ $COLOR -ne 0 ]
+if [ $COLOR != 0 ]
 then
     echo $COLOR
 fi
