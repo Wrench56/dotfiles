@@ -10,5 +10,5 @@ else
     # Offline
     echo 󰖪
     echo 󰖪
-    echo #E06C75
+    echo "#E06C75"
 fi
