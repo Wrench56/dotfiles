@@ -32,8 +32,7 @@ wrapper "Remove default ly config.ini" sudo rm /etc/ly/config.ini
 wrapper "Link ly config.ini" sudo ln -s "$DOTFILES/ly/config.ini /etc/ly/config.ini"
 
 # i3
-wrapper "Create i3 config directory" mkdir ~/.config/i3/ ~/.config/i3/config 
-# Not sure if rm is needed
+wrapper "Create i3 config directory" mkdir ~/.config/i3/
 wrapper "Remove i3 config file" rm ~/.config/i3/config
 wrapper "Link config file to i3 config directory" ln -s "$DOTFILES/i3/config ~/.config/i3/config"
 
