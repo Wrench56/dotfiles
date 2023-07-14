@@ -16,9 +16,7 @@ sudo pacman -S --noconfirm neofetch htop git nano man-db exa wget
 sudo pacman -S --needed --noconfirm git base-devel
 sudo pacman -S --noconfirm go
 git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
-cd ..
+(cd yay || exit 1; makepkg -si --noconfirm)
 rm -rf yay
 
 # Download downgrade
@@ -52,7 +50,7 @@ mkdir ~/.config/systemd ~/.config/systemd/user
 # Configure bluetooth
 sudo pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
 # Enable btusb module if not already loaded
-if [ lsmod | grep -c "^btusb" ]; then modprobe btusb; fi
+if [ "$(lsmod | grep -c "^btusb")" -eq 0 ]; then modprobe btusb; fi
 sudo systemctl enable bluetooth.service
 sudo systemctl --user enable pulseaudio
 
@@ -63,7 +61,7 @@ git clone https://github.com/Wrench56/dotfiles
 rm ./dotfiles/scripts/setup.sh
 for file in ./dotfiles/scripts/*
 do
-    chmod +x $file
+    chmod +x "$file"
 done
 
 # Download feh & set up wallpaper
@@ -127,5 +125,5 @@ sudo pacman -Syu --noconfirm
 
 # Run dotfiles.sh script
 sleep 1
-cd dotfiles
+cd dotfiles || exit 1
 ./scripts/dotfiles.sh
