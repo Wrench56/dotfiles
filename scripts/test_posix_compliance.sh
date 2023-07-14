@@ -14,7 +14,7 @@ check_posix_compliance() {
         # Shebang found
         if [ "$SHEBANG" = "#!/bin/sh" ]
         then
-            printf "\033[1mTesting %s... \e[0m" "$1"
+            printf "\033[1mTesting %s... \e[0m\n" "$1"
             checkbashisms -p -f -n "$1"
             shellcheck -o all -W 0 "$1"
         fi
@@ -34,10 +34,13 @@ recursive_search() {
             # Just to make sure (empty dirs can behave interestingly)
             if [ -f "$file" ]
             then
+                # Scripts with .sh extension
                 if [ "$(echo "$file" | tail -c 3)" = ".sh" ]
                 then
                     check_posix_compliance "$file"
                 fi
+
+                # Files without extension
                 if [ "$(echo "$file" | grep -P -o "(?!\/)(?:.(?!\/))+\$" | grep -c "\.")" -eq 0 ]
                 then
                     check_posix_compliance "$file"
@@ -47,4 +50,5 @@ recursive_search() {
     done
 }
 
+# Search the current directory
 recursive_search "."
