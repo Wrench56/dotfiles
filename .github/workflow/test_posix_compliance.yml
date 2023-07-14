@@ -1,0 +1,26 @@
+name: Test POSIX compliance
+
+on:
+  push:
+    paths:
+      - '**.sh'
+      - 'dunst/scripts/**'
+      - 'i3blocks/scripts/**'
+      - 'i3lock/**'
+      - 'rofi/menus/**'
+      - 'scripts/**'
+
+jobs: 
+  check: 
+    runs-on: ubuntu-latest 
+    steps: 
+    - uses: actions/checkout@v2 
+    - name: Install dependencies
+      run: | 
+        sudo apt-get install checkbashisms
+        sudo apt-get install shellcheck
+
+    - name: Run test_posix_compliance.sh
+      run: |
+        chmod +x ./scripts/test_posix_compliance.sh
+        ./scripts/test_posix_compliance.sh
