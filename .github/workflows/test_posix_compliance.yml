@@ -18,7 +18,7 @@ jobs:
     - name: Install dependencies
       run: | 
         sudo apt-get install devscripts
-        sudo apt-get install ShellCheck
+        sudo apt-get install shellcheck
 
     - name: Run test_posix_compliance.sh
       run: |
