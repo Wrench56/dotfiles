@@ -23,7 +23,7 @@ rm -rf yay
 yay -S downgrade --noconfirm
 
 # Get i3 window manager (only install the gnu-free-fonts)
-sudo pacman -S --noconfirm i3 xorg i3status picom
+sudo pacman -S --noconfirm i3 xorg xorg-xinit xorg-twm i3blocks picom
 
 # Get rofi
 sudo pacman -S --noconfirm rofi
@@ -83,11 +83,13 @@ sudo pacman -S --noconfirm zsh
     sudo git clone https://github.com/jirutka/zsh-shift-select /usr/share/zsh/plugins/zsh-shift-select
 
 # Make ~/.local/bin directory
-mkdir ~/.local/bin
+mkdir -p ~/.local/bin
 # Make ~/.local/share/fonts directory
-mkdir ~/.local/share/fonts
+mkdir -p ~/.local/share/fonts
 # Make ~/.cache/bash directory
-mkdir ~/.cache/bash
+mkdir -p ~/.cache/bash
+# Make ~/.config
+mkdir -p ~/.config
 
 ##########################################
 ################## APPS ##################
@@ -110,9 +112,6 @@ sudo pacman -S --noconfirm --needed autoconf cairo fontconfig gcc libev libjpeg-
 sudo pacman -R --noconfirm i3lock
 yay -S --noconfirm i3lock-color
 sudo pacman -S --noconfirm xautolock
-
-# Download brave browser (might change)
-yay -S --noconfirm brave-bin
 
 # Download neovim
 sudo pacman -S --noconfirm neovim
