@@ -8,16 +8,16 @@
 # Notice:
 # Current severity: INFO
 check_posix_compliance() {
-    SHEBANG="$(head -1 "$1" | grep -P "^#!.* || 0")"
-    if [ "$SHEBANG" = "0" ]
+    SHEBANG="$(head -1 "$1" | grep "^#!.*" || echo 0)"
+    if [ "$SHEBANG" = 0 ]
     then
         # No shebang - skip
         return
     else
         # Shebang found
         printf "\033[1mTesting %s... \e[0m\n" "$1"
-        if ! checkbashisms -p -n "$1"; then return $?; fi
-        if ! shellcheck -o all -W 0 --severity=info "$1"; then return $?; fi
+        if ! checkbashisms -p -n "$1"; then return 1; fi
+        if ! shellcheck -o all -W 0 --severity=info "$1"; then return 1; fi
     fi
 }
 
@@ -40,13 +40,13 @@ recursive_search() {
                 # Scripts with .sh extension
                 if [ "$(echo "$file" | tail -c 3)" = ".sh" ]
                 then 
-                    if ! check_posix_compliance "$file"; then exit $?; fi
+                    if ! check_posix_compliance "$file"; then exit 1; fi
                 fi
 
                 # Files without extension
                 if [ "$(echo "$file" | grep -P -o "(?!\/)(?:.(?!\/))+\$" | grep -c "\.")" -eq 0 ]
                 then
-                    if ! check_posix_compliance "$file"; then exit $?; fi
+                    if ! check_posix_compliance "$file"; then exit 1; fi
                 fi
             fi
         fi
