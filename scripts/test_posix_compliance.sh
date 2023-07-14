@@ -4,6 +4,9 @@
 
 # Parameters:
 #   $1 - File's path
+#
+# Notice:
+# Current severity: INFO
 check_posix_compliance() {
     SHEBANG="$(head -1 "$1" | grep -P "^#!.* || 0")"
     if [ "$SHEBANG" = "0" ]
@@ -12,17 +15,17 @@ check_posix_compliance() {
         return
     else
         # Shebang found
-        if [ "$SHEBANG" = "#!/bin/sh" ]
-        then
-            printf "\033[1mTesting %s... \e[0m\n" "$1"
-            checkbashisms -p -f -n "$1"
-            shellcheck -o all -W 0 "$1"
-        fi
+        printf "\033[1mTesting %s... \e[0m\n" "$1"
+        if ! checkbashisms -p -n "$1"; then return $?; fi
+        if ! shellcheck -o all -W 0 --severity=info "$1"; then return $?; fi
     fi
 }
 
 # Parameters:
 #   $1 - Path
+#
+# Notice:
+# This function fails immediately on error code
 recursive_search() {
     for file in "$1"/*
     do
@@ -36,14 +39,14 @@ recursive_search() {
             then
                 # Scripts with .sh extension
                 if [ "$(echo "$file" | tail -c 3)" = ".sh" ]
-                then
-                    check_posix_compliance "$file"
+                then 
+                    if ! check_posix_compliance "$file"; then exit $?; fi
                 fi
 
                 # Files without extension
                 if [ "$(echo "$file" | grep -P -o "(?!\/)(?:.(?!\/))+\$" | grep -c "\.")" -eq 0 ]
                 then
-                    check_posix_compliance "$file"
+                    if ! check_posix_compliance "$file"; then exit $?; fi
                 fi
             fi
         fi
