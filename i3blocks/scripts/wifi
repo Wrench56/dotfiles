@@ -1,8 +1,6 @@
 #!/bin/sh
 
-wget -q --spider http://www.google.com
-
-if [ $? -eq 0 ]; then
+if wget -q --spider http://www.google.com; then
     # Online
     echo 󰖩
     echo 󰖩
