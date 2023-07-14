@@ -4,9 +4,9 @@
 
 # Parameters:
 #   $1 - File's path
-check_for_bashisms() {
+check_posix_compliance() {
     SHEBANG="$(head -1 "$1" | grep -P "^#!.* || 0")"
-    if [ "$SHEBANG" -eq 0 ]
+    if [ "$SHEBANG" = "0" ]
     then
         # No shebang - skip
         return
@@ -16,7 +16,7 @@ check_for_bashisms() {
         then
             printf "\033[1mTesting %s... \e[0m" "$1"
             checkbashisms -p -f -n "$1"
-            checkshell -o all "$1"
+            shellcheck -o all -W 0 "$1"
         fi
     fi
 }
