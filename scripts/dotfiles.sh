@@ -34,7 +34,7 @@ wrapper "Link ly config.ini" sudo ln -s "$DOTFILES/ly/config.ini /etc/ly/config.
 # i3
 wrapper "Create i3 config directory" mkdir ~/.config/i3/
 wrapper "Remove i3 config file" rm ~/.config/i3/config
-wrapper "Link config file to i3 config directory" ln -s "$DOTFILES/i3/config ~/.config/i3/config"
+wrapper "Link config file to i3 config directory" ln -s "$DOTFILES/i3/config" ~/.config/i3/config
 
 # picom
 wrapper "Create picom config directory" mkdir ~/.config/picom
@@ -124,4 +124,5 @@ wrapper "Remove mc config folder" rm -rf ~/.config/mc
 wrapper "Create mc config folder" mkdir ~/.config/mc
 wrapper "Link mc ini file" ln -s "$DOTFILES/mc/ini" ~/.config/mc/ini
 wrapper "Remove ~/.local/share/mc/skins" rm -rf ~/.local/share/mc/skins
+wrapper "Create ~/.local/share/mc/" mkdir -p ~/.local/share/mc/
 wrapper "Link mc skins folder" ln -s "$DOTFILES/mc/skins" ~/.local/share/mc/skins
