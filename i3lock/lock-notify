@@ -6,7 +6,7 @@ set -e
 
 for p in $(seq 0 2 100); do
     dunstify --icon lock-clock \
-        -h int:value:$p \
+        -h int:value:"$p" \
         -h 'string:hlcolor:#ff4444' \
         -h string:x-dunst-stack-tag:progress-lock \
         --timeout=500 "Locking screen..." "Please move your mouse"
