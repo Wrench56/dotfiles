@@ -25,11 +25,11 @@ else
 fi
 
 # full_text
-echo $ICON "$BATTERY_LEVEL"%
+echo "$ICON" "$BATTERY_LEVEL"%
 # short_text
-echo $ICON "$BATTERY_LEVEL"%
+echo "$ICON" "$BATTERY_LEVEL"%
 # color
-if [ $COLOR != 0 ]
+if [ "$COLOR" != 0 ]
 then
-    echo $COLOR
+    echo "$COLOR"
 fi
