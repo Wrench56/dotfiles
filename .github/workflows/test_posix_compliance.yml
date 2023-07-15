@@ -21,11 +21,6 @@ jobs:
         packages: devscripts shellcheck
         version: 1.0
 
-    - name: Install dependencies
-      run: | 
-        sudo apt-get install devscripts
-        sudo apt-get install shellcheck
-
     - name: Run test_posix_compliance.sh
       run: |
         chmod +x ./scripts/test_posix_compliance.sh
