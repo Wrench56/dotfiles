@@ -2,7 +2,7 @@
 
 DISK_PERCENT=$(df -h / | grep -P -o "[0-9]{1,3}(?=%)")
 
-if [ $DISK_PERCENT -ge 85 ]
+if [ "$DISK_PERCENT" -ge 85 ]
 then
     notify-send -u critical -i "harddisk" "Disk full" "${DISK_PERCENT}% of your disk is used"
 fi
