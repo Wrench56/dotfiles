@@ -1,16 +1,12 @@
 #!/bin/sh
-# shellcheck disable=SC2034
 
 alpha='dd'
-background='#282C34'
 selection='#44475a'
 
-yellow='#E5C07B'
 orange='#ffb86c'
 red='#E06C75'
 magenta='#C678DD'
 blue='#61AFEF'
-cyan='#56B6C2'
 green='#98C379'
 
 i3lock \
@@ -51,4 +47,5 @@ i3lock \
   --date-font="Hack Nerd Font" \
   --layout-font="Hack Nerd Font" \
   --verif-font="Hack Nerd Font" \
-  --wrong-font="Hack Nerd Font" \
+  --wrong-font="Hack Nerd Font"
+
