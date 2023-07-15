@@ -14,7 +14,7 @@ fi
 echo " ${MEMORY_USAGE}%"
 echo " ${MEMORY_USAGE}%"
 
-if [ $COLOR != 0 ]
+if [ "$COLOR" != 0 ]
 then
-    echo $COLOR
+    echo "$COLOR"
 fi
