@@ -22,7 +22,7 @@ goback="Back"
 
 # Checks if bluetooth controller is powered on
 power_on() {
-    if bluetoothctl show | grep -q "Powered: yes"; then
+    if bluetoothctl show | grep -q "Powered: yes" || echo "Error: \"bluetoothctl show\" returned with error!" >> "$HOME"/.local/bin/rofi; then
         return 0
     else
         return 1
@@ -35,7 +35,7 @@ toggle_power() {
         bluetoothctl power off
         show_menu
     else
-        if rfkill list bluetooth | grep -q 'blocked: yes'; then
+        if rfkill list bluetooth || false | grep -q 'blocked: yes' || echo "Error: \"rfkill\" returned with error!" >> "$HOME"/.local/bin/rofi; then
             rfkill unblock bluetooth && sleep 3
         fi
         bluetoothctl power on
@@ -191,7 +191,7 @@ print_status() {
             paired_devices_cmd="paired-devices"
         fi
 
-        mapfile -t paired_devices < <(bluetoothctl $paired_devices_cmd | grep Device | cut -d ' ' -f 2)
+        mapfile -t paired_devices < <(bluetoothctl "$paired_devices_cmd" | grep Device | cut -d ' ' -f 2)
         counter=0
 
         for device in "${paired_devices[@]}"; do
