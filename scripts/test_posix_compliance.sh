@@ -2,6 +2,8 @@
 
 # Test whether scripts are POSIX compliant
 
+# shellcheck disable=SC2312
+
 # Parameters:
 #   $1 - File's path
 #
