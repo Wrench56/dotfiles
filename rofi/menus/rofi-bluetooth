@@ -16,13 +16,15 @@
 # Depends on:
 #   Arch repositories: rofi, bluez-utils (contains bluetoothctl)
 
+# shellcheck disable=SC2312
+
 # Constants
 divider="---------"
 goback="Back"
 
 # Checks if bluetooth controller is powered on
 power_on() {
-    if bluetoothctl show | grep -q "Powered: yes" || echo "Error: \"bluetoothctl show\" returned with error!" >> "$HOME"/.local/bin/rofi; then
+    if bluetoothctl show | grep -q "Powered: yes"; then
         return 0
     else
         return 1
@@ -35,7 +37,7 @@ toggle_power() {
         bluetoothctl power off
         show_menu
     else
-        if rfkill list bluetooth || false | grep -q 'blocked: yes' || echo "Error: \"rfkill\" returned with error!" >> "$HOME"/.local/bin/rofi; then
+        if rfkill list bluetooth | grep -q 'blocked: yes'; then
             rfkill unblock bluetooth && sleep 3
         fi
         bluetoothctl power on
@@ -250,6 +252,9 @@ device_menu() {
             ;;
         "$goback")
             show_menu
+            ;;
+        *)
+            echo "Unexpected error!"
             ;;
     esac
 }
