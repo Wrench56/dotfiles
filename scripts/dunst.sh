@@ -2,6 +2,8 @@
 
 # Configure dunst scripts
 
+# shellcheck disable=SC2312
+
 USERNAME=$(whoami)
 DOTFILES=$(dirname -- "$(realpath -- "$(dirname "$(realpath -s "$0")")")")
 
