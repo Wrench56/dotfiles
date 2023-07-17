@@ -2,6 +2,8 @@
 
 # Post install script for Arch Linux
 
+# shellcheck disable=SC2312
+
 # Enable pacman parallel downloads
 sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
