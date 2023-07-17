@@ -1,0 +1,56 @@
+#!/bin/sh
+
+# Take a screenshot
+
+DEFAULT_FOLDER="$HOME/screenshots"
+
+save() {
+    SAVEAS=$(printf "Copy to clipboard\nOverwrite screenshot.png\nDon't save" | rofi -dmenu -p "Save as: " -lines 3)
+    case $SAVEAS in
+        # Default: Copy to clipboard
+        "" | "Copy to clipboard")
+            xclip -selection c < /tmp/temp-screenshot.png
+            ;;
+        "Overwrite screenshot.png")
+            cp /tmp/temp-screenshot.png "$DEFAULT_FOLDER"/screenshot.png
+            notify-send -u low -i "screenshot" "Screenshot taken" "Saved as ${DEFAULT_FOLDER}/screenshot.png"
+            ;;
+        "Don't save")
+            exit
+            ;;
+        *)
+            if [ "$(echo "$SAVEAS" | tail -c 5)" != ".png" ]
+            then
+                cp /tmp/temp-screenshot.png "$DEFAULT_FOLDER"/"$SAVEAS".png
+                notify-send -u low -i "screenshot" "Screenshot taken" "Saved as ${DEFAULT_FOLDER}/${SAVEAS}.png"
+            else
+                cp /tmp/temp-screenshot.png "$DEFAULT_FOLDER"/"$SAVEAS"
+                notify-send -u low -i "screenshot" "Screenshot taken" "Saved as ${DEFAULT_FOLDER}/${SAVEAS}"
+            fi
+            ;;
+    esac
+}
+
+
+OPTION=$(printf "Cursor select\nCurrent window\nAll screens\nClose" | rofi -dmenu -p "Select an option: " -lines 4)
+case $OPTION in
+    # Default: Cursor select
+    "" | "Cursor select")
+        maim -s /tmp/temp-screenshot.png
+        ;;
+    "Current window")
+        maim -i "$(xdotool getactivewindow)" /tmp/temp-screenshot.png
+        ;;
+    "All screens")
+        maim /tmp/temp-screenshot.png
+        ;;
+    "Close")
+        exit 0
+        ;;
+    *)
+        echo "Error"; exit 1
+        ;;
+esac
+
+# Save the screenshot
+save

@@ -182,3 +182,6 @@ for_window [class="fm"] resize set 960 640
 for_window [class="fm"] move scratchpad
 for_window [class="fm"] border pixel 3
 exec --no-startup-id alacritty --class fm,fm -e mc
+
+# Screenshot
+bindsym $mod+Shift+s exec --no-startup-id ~/.local/bin/rofi/rofi-screenshot-menu

@@ -124,6 +124,9 @@ sudo pacman -S --noconfirm mc
 # Download Firefox
 sudo pacman -S --noconfirm firefox
 
+# Download maim (snipping tool)
+sudo pacman -S --noconfirm maim xdotool
+
 # System update
 sudo pacman -Syu --noconfirm
 
