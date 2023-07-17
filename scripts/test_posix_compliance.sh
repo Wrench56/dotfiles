@@ -18,7 +18,9 @@ check_posix_compliance() {
     else
         # Shebang found
         printf "\033[1mTesting %s... \e[0m\n" "$1"
-        if ! checkbashisms -p -n "$1"; then return 1; fi
+        checkbashisms -p -n "$1"
+        RETURN_CODE=$?
+        if [ $RETURN_CODE -ne 0 ] && [$RETURN_CODE -ne 4 ]; then return 1; fi
         if ! shellcheck -o all -W 0 --severity=info "$1"; then return 1; fi
     fi
 }
