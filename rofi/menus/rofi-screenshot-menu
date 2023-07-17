@@ -2,6 +2,8 @@
 
 # Take a screenshot
 
+# shellcheck disable=SC2312
+
 DEFAULT_FOLDER="$HOME/screenshots"
 
 save() {
