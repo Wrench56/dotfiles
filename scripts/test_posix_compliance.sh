@@ -38,7 +38,7 @@ recursive_search() {
             if [ -f "$file" ]
             then
                 # Scripts with .sh extension
-                if [ "$(echo "$file" | tail -c 3)" = ".sh" ]
+                if [ "$(echo "$file" | tail -c 4)" = ".sh" ]
                 then 
                     if ! check_posix_compliance "$file"; then exit 1; fi
                 fi
