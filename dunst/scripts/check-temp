@@ -1,9 +1,11 @@
 #!/bin/sh
 
+# shellcheck disable=SC2312
+
 for dir in /sys/class/thermal/thermal_zone*/; do
     if [ "$(cat "$dir/type" || true)" = "x86_pkg_temp" ]; then
         if [ "$(cat "$dir/temp" || true)" -ge 75000 ]; then
-            notify-send -u critical -i "fire" "Critical temperature" "Your CPU's temperature is $(sed 's/\(.\)..$/.\1°C/' "$dir/temp" || true; echo "ERROR")\nThat is an abnormal level"
+            notify-send -u critical -i "fire" "Critical temperature" "Your CPU's temperature is $(sed 's/\(.\)..$/.\1°C/' "$dir/temp" || echo "ERROR")\nThat is an abnormal level"
         fi
         break
     fi
