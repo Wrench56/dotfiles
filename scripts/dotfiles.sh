@@ -2,6 +2,8 @@
 
 # Script to symlink every dotfile where it needs to be
 
+# shellcheck disable=SC2312
+
 DOTFILES=$(dirname -- "$(realpath -- "$(dirname "$(realpath -s "$0")")")")
 
 # Parameters:
