@@ -59,7 +59,8 @@ scan_on() {
 # Toggles scanning state
 toggle_scan() {
     if scan_on; then
-        kill "$(pgrep -f "bluetoothctl scan on")"
+        # shellcheck disable=SC2046 
+        kill $(pgrep -f "bluetoothctl scan on")
         bluetoothctl scan off
         show_menu
     else
