@@ -9,8 +9,12 @@
 #
 # See README.md for more information.
 
+# shellcheck disable=SC2312
+
 set -e
 set -u
+
+shopt -s inherit_errexit
 
 # All supported choices
 all=(shutdown reboot suspend logout lockscreen)
@@ -49,7 +53,6 @@ showsymbols=true
 showtext=true
 
 function check_valid {
-    option="$1"
     shift 1
     for entry in "${@}"
     do
@@ -63,6 +66,7 @@ function check_valid {
 
 # Parse command-line options
 parsed=$(getopt --options=h --longoptions=help,dry-run,confirm:,choices:,choose:,symbols,no-symbols,text,no-text,symbols-font: --name "$0" -- "$@")
+# checkshell disable=SC2181
 if [ $? -ne 0 ]; then
     echo 'Terminating...' >&2
     exit 1
@@ -160,7 +164,7 @@ while true; do
     esac
 done
 
-if [ "$showsymbols" = "false" -a "$showtext" = "false" ]
+if [ "$showsymbols" = "false" ] && [ "$showtext" = "false" ]
 then
     echo "Invalid options: cannot have --no-symbols and --no-text enabled at the same time." >&2
     exit 1
@@ -191,7 +195,7 @@ function write_message {
 }
 
 function print_selection {
-    echo -e "$1" | $(read -r -d '' entry; echo "echo $entry")
+    echo -e "$1" | eval read -r -d '' entry; echo "echo $entry"
 }
 
 declare -A messages
@@ -208,6 +212,9 @@ confirmationMessages[cancel]=$(write_message "${icons[cancel]}" "No, cancel")
 
 if [ $# -gt 0 ]
 then
+    # shellcheck disable=SC2124 
+    # ^ I'm not sure what this is all about
+
     # If arguments given, use those as the selection
     selection="${@}"
 else
