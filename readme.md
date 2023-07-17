@@ -1,6 +1,6 @@
 # Dotfiles
 
-<center>My Arch dotfiles and configuration for zsh, i3, dunst, nvim, rofi and more!</center>
+<p align="center">My Arch dotfiles and configuration for zsh, i3, dunst, nvim, rofi and more!</p>
 ![Workspace](https://github.com/Wrench56/dotfiles/blob/main/resources/arch-workspace.png?raw=true)
 
 <details><summary>More images</summary>
