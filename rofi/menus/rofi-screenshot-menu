@@ -11,7 +11,7 @@ save() {
     case $SAVEAS in
         # Default: Copy to clipboard
         "" | "Copy to clipboard")
-            xclip -selection c < /tmp/temp-screenshot.png
+            xclip -selection c -target image/png < /tmp/temp-screenshot.png
             ;;
         "Overwrite screenshot.png")
             cp /tmp/temp-screenshot.png "$DEFAULT_FOLDER"/screenshot.png
