@@ -10,4 +10,7 @@ nvimtree.setup({
 			enable = true	
 		}
 	}
+	filters = {
+		git_ignored = false
+	}
 })
