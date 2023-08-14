@@ -79,7 +79,11 @@ require("lazy").setup({
     'lewis6991/gitsigns.nvim',
     event = 'BufWinEnter'
   },
-  'andweeb/presence.nvim'
+  'andweeb/presence.nvim',
+  {
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  }
 },
 {
   install = {

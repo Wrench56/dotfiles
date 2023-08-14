@@ -50,3 +50,9 @@ smap('v', 'h', '<Delete><Esc>ih') -- TODO: Do this to all the different keys
 
 smap('t', '<C-t>', '<Cmd>ToggleTermToggleAll<CR>')
 smap('n', '<C-t>', '<Cmd>ToggleTermToggleAll<CR>')
+
+-- Trouble
+
+smap('n', '<C-p>', '<Cmd>TroubleToggle<CR>')
+smap('i', '<C-p>', '<Cmd>TroubleToggle<CR>')
+
