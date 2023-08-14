@@ -13,6 +13,7 @@ sudo systemctl enable paccache.timer
 
 # Get some frequently used packages
 sudo pacman -S --noconfirm neofetch onefetch htop git nano man-db exa wget bc
+git config --global credential.helper store
 
 # Get yay AUR package helper
 sudo pacman -S --needed --noconfirm git base-devel
