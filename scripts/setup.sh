@@ -124,6 +124,9 @@ sudo pacman -S --noconfirm neovim
     sudo pacman -S --noconfirm lazygit
     # Install ascii-image-converter (for image.nvim)
     sudo yay -S --noconfirm ascii-image-converter-git
+    # Install jq & tidy (for rest.nvim)
+    sudo pacman -S --noconfirm jq tidy
+
 
 # Download mc
 sudo pacman -S --noconfirm mc

@@ -48,7 +48,11 @@ local mappings = {
         n = { '<cmd>Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
         N = { '<cmd>Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
     },
-    g = {function() lazygit:toggle() end, "Open lazygit"}
+    g = {function() lazygit:toggle() end, 'Open lazygit'},
+    u = {
+        name = 'Utils',
+        r = { '<Plug>RestNvim', 'Run HTTP REST Client' }
+    }
 }
 
 local opts = {

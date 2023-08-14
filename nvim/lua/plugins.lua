@@ -90,7 +90,8 @@ require("lazy").setup({
     'nvim-lua/plenary.nvim',
     'm00qek/baleia.nvim'
     }
-  }
+  },
+  'rest-nvim/rest.nvim'
 },
 {
   install = {
