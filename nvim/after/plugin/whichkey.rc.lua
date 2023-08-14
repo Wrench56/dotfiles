@@ -9,15 +9,22 @@ wk.setup({
     }
 })
 
+-- toggleterm:lazygit
+local lazygit = require'toggleterm.terminal'.Terminal:new {
+  cmd = 'lazygit',
+  hidden = true,
+  direction = 'float'
+}
+
 local mappings = {
     e = {':NvimTreeToggle<CR>', 'Toggle filetree'},
-    t = {':Telescope find_files<CR>', 'Open Telescope'},
+    o = {':Telescope find_files<CR>', 'Open Telescope'},
     f = {':Telescope live_grep<CR>', 'Find in files'},
-    b = {
-        name = 'Open Bash',
-        f = {':ToggleTerm<CR>', 'Open Bash on Float'},
-        t = {':ToggleTerm direction=tab<CR>', 'Open Bash in Tab'},
-        s = {':ToggleTerm size=40 direction=vertical<CR>', 'Open Bash on Side'}
+    t = {
+        name = 'Open Terminal',
+        f = {':ToggleTerm<CR>', 'Open Terminal on Float'},
+        t = {':ToggleTerm direction=tab<CR>', 'Open Terminal in Tab'},
+        s = {':ToggleTerm size=40 direction=vertical<CR>', 'Open Terminal on Side'}
     },
     d = {':Dashboard<CR>', 'Open Dashboard'},
     l = {
@@ -40,7 +47,8 @@ local mappings = {
         e = { '<cmd>Lspsaga show_line_diagnostics<cr>', "Show Line Diagnostics" },
         n = { '<cmd>Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
         N = { '<cmd>Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
-    }
+    },
+    g = {function() lazygit:toggle() end, "Open lazygit"}
 }
 
 local opts = {
