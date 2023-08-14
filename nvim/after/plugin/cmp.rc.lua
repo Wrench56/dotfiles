@@ -1,5 +1,5 @@
 vim.g.completeopt="menu,menuone,noselect,noinsert"
-vim.g.vsnip_snippet_dir = '~/.config/.vsnip'
+vim.g.vsnip_snippet_dir = '~/.config/vsnip'
 
 local has_words_before = function()
     unpack = unpack or table.unpack

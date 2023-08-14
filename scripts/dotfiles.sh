@@ -121,6 +121,10 @@ make_executables "$HOME/.local/bin/rofi/rofi-*"
 wrapper "Remove nvim config folder" rm -rf ~/.config/nvim
 wrapper "Link nvim config folder" ln -s "$DOTFILES/nvim" ~/.config/nvim
 
+# vsnip
+wrapper "Remove vsnip folder" rm -rf ~/.config/vsnip
+wrapper "Link vsnip folder" ln -s "$DOTFILES/vsnip" ~/.config/vsnip
+
 # mc (Midnight Commander)
 wrapper "Remove mc config folder" rm -rf ~/.config/mc
 wrapper "Create mc config folder" mkdir ~/.config/mc

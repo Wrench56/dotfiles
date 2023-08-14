@@ -1,0 +1,11 @@
+{
+    "if __name__": {
+        "prefix": ["if __name__"],
+        "body": [
+            "if __name__ == '__main__':",
+            "\tmain()",
+            ""
+        ],
+        "description": "Python main file \"starter\""
+    }
+}
