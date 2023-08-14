@@ -83,6 +83,13 @@ require("lazy").setup({
   {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
+  {
+    'samodostal/image.nvim',
+    dependencies = {
+    'nvim-lua/plenary.nvim',
+    'm00qek/baleia.nvim'
+    }
   }
 },
 {

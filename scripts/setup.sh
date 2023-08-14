@@ -93,6 +93,8 @@ mkdir -p ~/.local/share/fonts
 mkdir -p ~/.cache/bash
 # Make ~/.config
 mkdir -p ~/.config
+# Make ~/.secrets
+mkdir -p ~/.secrets
 
 ##########################################
 ################## APPS ##################
@@ -120,6 +122,8 @@ sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm neovim
     # Install lazygit
     sudo pacman -S --noconfirm lazygit
+    # Install ascii-image-converter (for image.nvim)
+    sudo yay -S --noconfirm ascii-image-converter-git
 
 # Download mc
 sudo pacman -S --noconfirm mc
