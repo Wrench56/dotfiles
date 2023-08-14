@@ -22,3 +22,5 @@ alias ..='cd ..'
 alias mkdir='mkdir -pv'
 
 alias lock='~/.local/bin/lock'
+
+alias mc='SHELL=/bin/bash . /usr/lib/mc/mc-wrapper.sh'
