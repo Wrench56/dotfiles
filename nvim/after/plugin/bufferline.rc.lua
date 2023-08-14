@@ -1,7 +1,19 @@
 local status, bufferline = pcall(require, 'bufferline')
 if (not status) then return end
 
-bufferline.setup({})
+bufferline.setup({
+    options = {
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer",
+                text_align = "left",
+                separator = true
+            }
+        },
+        separator_style = "slant"
+    }
+})
 
 
 vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
