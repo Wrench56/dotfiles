@@ -12,7 +12,7 @@ sudo pacman -Sy --noconfirm pacman-contrib
 sudo systemctl enable paccache.timer
 
 # Get some frequently used packages
-sudo pacman -S --noconfirm neofetch onefetch htop git nano man-db exa wget bc
+sudo pacman -S --noconfirm neofetch onefetch htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep
 git config --global credential.helper store
 
 # Get yay AUR package helper
