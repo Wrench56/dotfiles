@@ -118,6 +118,8 @@ sudo pacman -S --noconfirm xautolock
 
 # Download neovim
 sudo pacman -S --noconfirm neovim
+    # Install lazygit
+    sudo pacman -S --noconfirm lazygit
 
 # Download mc
 sudo pacman -S --noconfirm mc
