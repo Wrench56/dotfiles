@@ -96,6 +96,22 @@ mkdir -p ~/.config
 # Make ~/.secrets
 mkdir -p ~/.secrets
 
+
+##########################################
+################ LANGUAGES ###############
+##########################################
+
+# Install Python
+sudo pacman -S --noconfirm python python-pip
+
+# Install Rust
+sudo pacman -S --noconfirm rustup
+rustup default stable
+
+# Install clang & gdb (debugger)
+sudo pacman -S --noconfirm clang gdb
+
+
 ##########################################
 ################## APPS ##################
 ##########################################
@@ -126,6 +142,8 @@ sudo pacman -S --noconfirm neovim
     sudo yay -S --noconfirm ascii-image-converter-git
     # Install jq & tidy (for rest.nvim)
     sudo pacman -S --noconfirm jq tidy
+    # Install pynvim
+    pip install pynvim
 
 
 # Download mc
