@@ -38,12 +38,6 @@ smap('v', '<C-c>', '"*yy<Esc>i')
 smap('v', '<C-x>', '"*dd<Esc>i')
 smap('i', '<C-v>', '<Esc>"*pi')
 
-
--- Will I regret this? Maybe...
-
-smap('v', 'h', '<Delete><Esc>ih') -- TODO: Do this to all the different keys
-
-
 -- ========================================
 
 -- Terminal

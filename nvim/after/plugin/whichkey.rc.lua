@@ -52,7 +52,8 @@ local mappings = {
     u = {
         name = 'Utils',
         r = { '<Plug>RestNvim', 'Run HTTP REST Client' },
-        t = { ':TOC<CR>', 'Create markdown table of content'}
+        t = { ':TOC<CR>', 'Create markdown table of content'},
+        v = { ':lua Toggle_venn()<CR>', 'Enable venn (diagram drawing)'}
     },
     p = { '<cmd>lua require("nabla").toggle_virt()<CR>', 'LaTeX Preview' }
 }
