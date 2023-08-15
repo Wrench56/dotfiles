@@ -16,6 +16,8 @@ local lazygit = require'toggleterm.terminal'.Terminal:new {
   direction = 'float'
 }
 
+local crates = require('crates')
+
 local mappings = {
     e = {':NvimTreeToggle<CR>', 'Toggle filetree'},
     o = {':Telescope find_files<CR>', 'Open Telescope'},
@@ -55,8 +57,23 @@ local mappings = {
         t = { ':TOC<CR>', 'Create markdown table of content'},
         v = { ':lua Toggle_venn()<CR>', 'Enable venn (diagram drawing)'}
     },
-    p = { '<cmd>lua require("nabla").toggle_virt()<CR>', 'LaTeX Preview' }
+    p = { '<cmd>lua require("nabla").toggle_virt()<CR>', 'LaTeX Preview' },
+    c = {
+        name = 'Cargo',
+        r = { crates.reload, 'Reload' },
+        u = { crates.update_crate, 'Update crate (v1.*.*)' },
+        a = { crates.update_all_crates, 'Update all crates (v1.*.*)' },
+        U = { crates.upgrade_crate, 'Upgrade crate (v*.*.*)' },
+        A = { crates.upgrade_all_crates, 'Upgrade all crates (v*.*.*)' },
+        d = { crates.show_dependencies_popup, 'Show dependencies' },
+        f = { crates.show_features_popup, 'Show features' },
+        i = { crates.show_crate_popup, 'Show info about crate' },
+        v = { crates.show_versions_popup, 'Show versions' }
+    }
 }
+
+vim.keymap.set('v', '<leader>cu', crates.update_crates, { silent = true })
+vim.keymap.set('v', '<leader>cU', crates.upgrade_crates, { silent = true })
 
 local opts = {
     prefix = '<leader>'

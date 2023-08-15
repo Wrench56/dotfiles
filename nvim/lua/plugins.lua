@@ -109,7 +109,21 @@ require("lazy").setup({
       'nvim-lua/plenary.nvim',
     }
   },
-  'jbyuki/venn.nvim'
+  'jbyuki/venn.nvim',
+  {
+    'saecki/crates.nvim',
+    --event = 'BufRead Cargo.toml',
+    tag = 'v0.3.0',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+        require('crates').setup({
+            popup = {
+                autofocus = true,
+                border = 'rounded'
+            }
+        })
+    end
+  }
 },
 {
   install = {
