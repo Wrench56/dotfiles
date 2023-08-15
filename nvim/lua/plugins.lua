@@ -100,6 +100,14 @@ require("lazy").setup({
     config = function()
         require('nvim-toc').setup({})
     end
+  },
+  {
+    'sudormrfbin/cheatsheet.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    }
   }
 },
 {
