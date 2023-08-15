@@ -108,7 +108,8 @@ require("lazy").setup({
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
     }
-  }
+  },
+  'jbyuki/venn.nvim'
 },
 {
   install = {
