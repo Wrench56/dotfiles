@@ -111,6 +111,9 @@ rustup default stable
 # Install clang & gdb (debugger)
 sudo pacman -S --noconfirm clang gdb
 
+# Install Node.js
+sudo pacman -S --noconfirm nodejs npm
+
 
 ##########################################
 ################## APPS ##################
