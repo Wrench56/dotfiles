@@ -10,7 +10,7 @@ autotag = {
 ts.setup {
     -- A list of parser names, or "all"
     ensure_installed = { "c", "lua", "rust", "python",
-     "cpp", "html", "http", "javascript", "json",
+     "cpp", "html", "http", "javascript", "json", "latex",
      "java", "make", "markdown", "pascal", "perl", "php",
      "regex", "ruby", "scss", "css", "sql", "solidity",
      "vim"},

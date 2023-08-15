@@ -51,8 +51,10 @@ local mappings = {
     g = {function() lazygit:toggle() end, 'Open lazygit'},
     u = {
         name = 'Utils',
-        r = { '<Plug>RestNvim', 'Run HTTP REST Client' }
-    }
+        r = { '<Plug>RestNvim', 'Run HTTP REST Client' },
+        t = { ':TOC<CR>', 'Create markdown table of content'}
+    },
+    p = { '<cmd>lua require("nabla").toggle_virt()<CR>', 'LaTeX Preview' }
 }
 
 local opts = {

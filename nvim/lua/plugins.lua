@@ -87,11 +87,20 @@ require("lazy").setup({
   {
     'samodostal/image.nvim',
     dependencies = {
-    'nvim-lua/plenary.nvim',
-    'm00qek/baleia.nvim'
+      'nvim-lua/plenary.nvim',
+      'm00qek/baleia.nvim'
     }
   },
-  'rest-nvim/rest.nvim'
+  'rest-nvim/rest.nvim',
+  'NFrid/due.nvim',
+  'jbyuki/nabla.nvim',
+  {
+    'richardbizik/nvim-toc',
+    event = 'BufRead *.md',
+    config = function()
+        require('nvim-toc').setup({})
+    end
+  }
 },
 {
   install = {
