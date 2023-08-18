@@ -42,3 +42,8 @@ vim.api.nvim_create_autocmd('BufNewFile', {command = 'setlocal signcolumn=yes'})
 -- Turn off indentation for special buffers (like dashboard)
 
 vim.g.indent_blankline_filetype_exclude = {'dashboard'}
+
+-- Disable spell check by default
+
+vim.opt.spell = false
+vim.opt.spelllang = 'en_us'

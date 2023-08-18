@@ -16,6 +16,10 @@ local lazygit = require'toggleterm.terminal'.Terminal:new {
   direction = 'float'
 }
 
+local function toggle_spell_check()
+    vim.opt.spell = not(vim.opt.spell:get())
+end
+
 local crates = require('crates')
 
 local mappings = {
@@ -54,8 +58,9 @@ local mappings = {
     u = {
         name = 'Utils',
         r = { '<Plug>RestNvim', 'Run HTTP REST Client' },
-        t = { ':TOC<CR>', 'Create markdown table of content'},
-        v = { ':lua Toggle_venn()<CR>', 'Enable venn (diagram drawing)'}
+        t = { ':TOC<CR>', 'Create markdown table of content' },
+        v = { ':lua Toggle_venn()<CR>', 'Enable venn (diagram drawing)' },
+        s = { toggle_spell_check, 'Toggle spell check' }
     },
     p = { '<cmd>lua require("nabla").toggle_virt()<CR>', 'LaTeX Preview' },
     c = {
