@@ -83,29 +83,14 @@ for type, icon in pairs(signs) do
 end
 
 
--- Language servers
+-- Language servers (with mason.nvim)
 
-local status, lspconfig = pcall(require, 'lspconfig')
+require('mason').setup()
+local status, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if (not status) then return end
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-lspconfig.html.setup {
-  capabilities = capabilities
+mason_lspconfig.setup_handlers {
+    function (server_name)
+        require('lspconfig')[server_name].setup {}
+    end,
 }
 
-lspconfig.cssls.setup {
-  capabilities = capabilities
-}
-
-lspconfig.jsonls.setup {
-  capabilities = capabilities
-}
-
-lspconfig.pyright.setup {
-  capabilities = capabilities
-}
-
-lspconfig.clangd.setup {
-  capabilities = capabilities
-}

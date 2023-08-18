@@ -5,6 +5,8 @@ vim.api.nvim_set_hl(0, "LazyNormal", { ctermbg=0 })
 require("lazy").setup({
   'shaunsingh/nord.nvim',
   'navarasu/onedark.nvim',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
   {
     'nvim-treesitter/nvim-treesitter',
     build = function()
