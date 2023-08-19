@@ -54,7 +54,13 @@ local mappings = {
         n = { '<cmd>Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
         N = { '<cmd>Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
     },
-    g = {function() lazygit:toggle() end, 'Open lazygit'},
+    g = {
+        name = 'Git tools',
+        l = { function() lazygit:toggle() end, 'Open lazygit' },
+        i = { '<cmd>Octo issue list<CR>', 'List GitHub issues' },
+        p = { '<cmd>Octo pr list<CR>', 'List Pull Requests' },
+        a = { '<cmd>GhActions<CR>', 'Open GitHub Actions tab' }
+    },
     u = {
         name = 'Utils',
         r = { '<Plug>RestNvim', 'Run HTTP REST Client' },

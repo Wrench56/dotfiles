@@ -119,6 +119,9 @@ sudo pacman -S --noconfirm nodejs npm
 ################## APPS ##################
 ##########################################
 
+# Install GitHub CLI tool
+sudo pacman -S --noconfirm github-cli
+
 # Get alacritty terminal emulator (I want a lightweight terminal with opaque background)
 sudo pacman -S --noconfirm alacritty
     # Download lightweight clipboard

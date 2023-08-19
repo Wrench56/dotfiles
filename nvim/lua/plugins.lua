@@ -35,7 +35,7 @@ require("lazy").setup({
   },
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { 
+    dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-treesitter/nvim-treesitter'
     }
@@ -124,6 +124,30 @@ require("lazy").setup({
                 border = 'rounded'
             }
         })
+    end
+  },
+  {
+    'topaxi/gh-actions.nvim',
+    cmd = 'GhActions',
+    build = 'make',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'MunifTanjim/nui.nvim'
+    },
+    config = function()
+        require('gh-actions').setup()
+    end
+
+  },
+  {
+    'pwntester/octo.nvim',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope.nvim',
+        'nvim-tree/nvim-web-devicons'
+    },
+    config = function()
+        require('octo').setup()
     end
   }
 },
