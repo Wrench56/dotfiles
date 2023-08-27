@@ -14,6 +14,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# PATH
+export PATH=$PATH:~/.local/bin
+
 # Source aliases
 source ~/.local/aliases
 
@@ -29,4 +32,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-shift-select/zsh-shift-select.plugin.zsh
 
 # Keybinds
-source ~/.local/keybinds
+source ~/.local/Keybinds
