@@ -32,4 +32,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-shift-select/zsh-shift-select.plugin.zsh
 
 # Keybinds
-source ~/.local/Keybinds
+source ~/.local/keybinds
