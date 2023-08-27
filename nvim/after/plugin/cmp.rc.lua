@@ -94,3 +94,5 @@ mason_lspconfig.setup_handlers {
     end,
 }
 
+require('rust-tools').setup({})
+

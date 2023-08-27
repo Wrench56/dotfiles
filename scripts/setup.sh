@@ -107,6 +107,7 @@ sudo pacman -S --noconfirm python python-pip
 # Install Rust
 sudo pacman -S --noconfirm rustup
 rustup default stable
+rustup component add rust-analyzer
 
 # Install clang & gdb (debugger)
 sudo pacman -S --noconfirm clang gdb

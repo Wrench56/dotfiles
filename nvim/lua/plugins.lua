@@ -149,7 +149,10 @@ require("lazy").setup({
     config = function()
         require('octo').setup()
     end
-  }
+  },
+  'simrat39/rust-tools.nvim',
+  'mfussenegger/nvim-dap'
+
 },
 {
   install = {
