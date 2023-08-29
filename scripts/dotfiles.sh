@@ -134,4 +134,4 @@ wrapper "Create ~/.local/share/mc/" mkdir -p ~/.local/share/mc/
 wrapper "Link mc skins folder" ln -s "$DOTFILES/mc/skins" ~/.local/share/mc/skins
 
 # maintenance.sh
-wrapper "Link maintenance.sh to ~/.local/bin" ln -s $DOTFILES/scripts/maintenance.sh ~/.local/bin/maintenance.sh
+wrapper "Link maintenance.sh to ~/.local/bin" ln -s "$DOTFILES/scripts/maintenance.sh" ~/.local/bin/maintenance.sh
