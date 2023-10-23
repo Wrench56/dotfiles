@@ -9,7 +9,7 @@ nvimtree.setup({
 		indent_markers = {
 			enable = true	
 		}
-	}
+	},
 	filters = {
 		git_ignored = false
 	}
