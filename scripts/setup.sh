@@ -111,7 +111,7 @@ sudo pacman -S --noconfirm --needed neovim
     # Install jq & tidy (for rest.nvim)
     sudo pacman -S --noconfirm --needed jq tidy
     # Install pynvim
-    pip install pynvim
+    sudo pacman -S --noconfirm --needed python-pynvim
 
 
 # Download Qutebrowser
