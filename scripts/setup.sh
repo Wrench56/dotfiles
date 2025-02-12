@@ -8,22 +8,21 @@
 sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
 # Weekly pacman cache clearing
-sudo pacman -Sy --noconfirm pacman-contrib
+sudo pacman -Sy --noconfirm --needed pacman-contrib
 sudo systemctl enable paccache.timer
 
 # Get some frequently used packages
-sudo pacman -S --noconfirm neofetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep
+sudo pacman -S --noconfirm -needed neofetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep
 git config --global credential.helper store
 
 # Get GitHub CLI
-sudo pacman -S --noconfirm github-cli
+sudo pacman -S --noconfirm --needed github-cli
 
 # Get i3 window manager (only install the gnu-free-fonts)
-sudo pacman -S --noconfirm i3 xorg-server xorg-xinit i3blocks
+sudo pacman -S --noconfirm --needed i3 xorg-server xorg-xinit i3blocks
 
 # Get rofi
-sudo pacman -S --noconfirm rofi
-sudo pacman -S --noconfirm papirus-icon-theme
+sudo pacman -S --noconfirm -needed rofi papirus-icon-theme 
 
 # Fix boot messages disappearing
 sudo sed -i s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service 
@@ -56,7 +55,7 @@ do
 done
 
 # Download dunst
-sudo pacman -S --noconfirm dunst libnotify
+sudo pacman -S --noconfirm --needed dunst libnotify
 
 # Make ~/.local/bin directory
 mkdir -p ~/.local/bin
@@ -75,18 +74,18 @@ mkdir -p ~/.secrets
 ##########################################
 
 # Install Python
-sudo pacman -S --noconfirm python python-pip
+sudo pacman -S --noconfirm --needed python python-pip
 
 # Install Rust
-sudo pacman -S --noconfirm rustup
+sudo pacman -S --noconfirm --needed rustup
 rustup default stable
 rustup component add rust-analyzer
 
 # Install clang & gdb (debugger)
-sudo pacman -S --noconfirm clang gdb
+sudo pacman -S --noconfirm --needed clang gdb
 
 # Install Node.js
-sudo pacman -S --noconfirm nodejs npm
+sudo pacman -S --noconfirm --needed nodejs npm
 
 
 ##########################################
@@ -94,32 +93,32 @@ sudo pacman -S --noconfirm nodejs npm
 ##########################################
 
 # Get alacritty terminal emulator
-sudo pacman -S --noconfirm alacritty
+sudo pacman -S --noconfirm --needed alacritty
     # Download lightweight clipboard
-    sudo pacman -S --noconfirm xclip
+    sudo pacman -S --noconfirm --needed xclip
     # Install hack nerd fonts
-    sudo pacman -S --noconfirm ttf-hack-nerd
+    sudo pacman -S --noconfirm --needed ttf-hack-nerd
     # Install xdg-utils (xdg-open)
-    sudo pacman -S --noconfirm xdg-utils
+    sudo pacman -S --noconfirm --needed xdg-utils
 
 # Download neovim
-sudo pacman -S --noconfirm neovim
+sudo pacman -S --noconfirm --needed neovim
     # Install lazygit
-    sudo pacman -S --noconfirm lazygit
+    sudo pacman -S --noconfirm --needed lazygit
     # Install jq & tidy (for rest.nvim)
-    sudo pacman -S --noconfirm jq tidy
+    sudo pacman -S --noconfirm --needed jq tidy
     # Install pynvim
     pip install pynvim
 
 
 # Download Qutebrowser
-sudo pacman -S --noconfirm qutebrowser
+sudo pacman -S --noconfirm -needed qutebrowser
 
 # Download maim (snipping tool)
-sudo pacman -S --noconfirm maim xdotool
+sudo pacman -S --noconfirm --needed maim xdotool
 
 # System update
-sudo pacman -Syu --noconfirm
+sudo pacman -Syu --noconfirm --needed
 
 # Run dotfiles.sh script
 sleep 1
