@@ -4,51 +4,58 @@
 
 # shellcheck disable=SC2312
 
+DOTFILES=$(dirname -- "$(realpath -- "$(dirname "$(realpath -s "$0")")")")
+
+# Parameters:
+#   $1 - Label
+#   $2 - Command
+
+wrapper() {
+    output=$("${@:2}" 2>&1)
+    if [[ $? -eq 0 ]]
+    then
+        printf "\033[1m[\e[32m Ok \e[0m\033[1m] %s\e[0m\n" "$1"
+    else
+        printf "\033[1m[\e[31mFail\e[0m\033[1m] %s\e[0m\n       \033[1m\e[31mError\e[0m $output\n" "$1"
+    fi
+}
+
 # Enable pacman parallel downloads
-sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
+wrapper "Enable parallel downloads for Pacman" sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
 # Weekly pacman cache clearing
-sudo pacman -Sy --noconfirm --needed pacman-contrib
-sudo systemctl enable paccache.timer
+wrapper "Enable Pacman cache clearing" sudo pacman -Sy --noconfirm --needed pacman-contrib; sudo systemctl enable paccache.timer 
 
 # Get some frequently used packages
-sudo pacman -S --noconfirm -needed neofetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep
-git config --global credential.helper store
-
-# Get GitHub CLI
-sudo pacman -S --noconfirm --needed github-cli
+wrapper "Install common packages" sudo pacman -S --noconfirm --needed neofetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep github-cli
 
 # Get i3 window manager (only install the gnu-free-fonts)
-sudo pacman -S --noconfirm --needed i3 xorg-server xorg-xinit i3blocks
+wrapper "Install Xorg and i3wm" sudo pacman -S --noconfirm --needed i3-wm xorg-server xorg-xinit i3blocks
 
 # Get rofi
-sudo pacman -S --noconfirm -needed rofi papirus-icon-theme 
+wrapper "Install Rofi" sudo pacman -S --noconfirm --needed rofi papirus-icon-theme 
 
 # Fix boot messages disappearing
-sudo sed -i s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service 
-sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"/' /etc/default/grub
-
-# Hide the GRUB boot menu
-sudo sed -i "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/" /etc/default/grub
+wrapper "Fix logs disappearing on boot" sudo sed -i s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service; sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"/' /etc/default/grub
 
 # Run mkconfig for GRUB
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+wrapper "Run grub-mkconfig" sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Create user specific systemd service/timer directory
-mkdir ~/.config/systemd ~/.config/systemd/user
+wrapper "Create systemd service/timer directory" mkdir ~/.config/systemd ~/.config/systemd/user
 
 # Configure bluetooth
-sudo pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
+wrapper "Install bluetooth specific packages" sudo pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
 # Enable btusb module if not already loaded
 if [ "$(lsmod | grep -c "^btusb")" -eq 0 ]; then modprobe btusb; fi
-sudo systemctl enable bluetooth.service
-sudo systemctl --user enable pulseaudio
+wrapper "Enable bluetooth service" sudo systemctl enable bluetooth.service
+wrapper "Enable pulseaudio" sudo systemctl --user enable pulseaudio
 
 # Clone the dotfiles GitHub repository
-git clone https://github.com/Wrench56/dotfiles
+wrapper "Clone dotfiles repository" git clone https://github.com/Wrench56/dotfiles
 
 # Switch to correct branch
-git checkout arch-minimal
+wrapper "Checkout arch-minimal branch" git checkout arch-minimal
 
 # Make the dotfiles scripts executable
 rm ./dotfiles/scripts/setup.sh
@@ -58,18 +65,18 @@ do
 done
 
 # Download dunst
-sudo pacman -S --noconfirm --needed dunst libnotify
+wrapper "Install dunst" sudo pacman -S --noconfirm --needed dunst libnotify
 
 # Make ~/.local/bin directory
-mkdir -p ~/.local/bin
+wrapper "Create ~/.local/bin" mkdir -p ~/.local/bin
 # Make ~/.local/share/fonts directory
-mkdir -p ~/.local/share/fonts
+wrapper "Create ~/.local/share/fonts" mkdir -p ~/.local/share/fonts
 # Make ~/.cache/bash directory
-mkdir -p ~/.cache/bash
+wrapper "Create ~/.cache/bash" mkdir -p ~/.cache/bash
 # Make ~/.config
-mkdir -p ~/.config
+wrapper "Create ~/.config" mkdir -p ~/.config
 # Make ~/.secrets
-mkdir -p ~/.secrets
+wrapper "Create ~/.secrets" mkdir -p ~/.secrets
 
 
 ##########################################
@@ -77,18 +84,18 @@ mkdir -p ~/.secrets
 ##########################################
 
 # Install Python
-sudo pacman -S --noconfirm --needed python python-pip
+wrapper "Install Python" sudo pacman -S --noconfirm --needed python python-pip
 
 # Install Rust
-sudo pacman -S --noconfirm --needed rustup
-rustup default stable
-rustup component add rust-analyzer
+wrapper "Install rustup" sudo pacman -S --noconfirm --needed rustup
+wrapper "Install Rust toolchain" rustup default stable
+wrapper "Install rust-analyzer" rustup component add rust-analyzer
 
 # Install clang & gdb (debugger)
-sudo pacman -S --noconfirm --needed clang gdb
+wrapper "Install clang and gdb" sudo pacman -S --noconfirm --needed clang gdb
 
 # Install Node.js
-sudo pacman -S --noconfirm --needed nodejs npm
+wrapper "Install Node" sudo pacman -S --noconfirm --needed nodejs npm
 
 
 ##########################################
@@ -96,32 +103,32 @@ sudo pacman -S --noconfirm --needed nodejs npm
 ##########################################
 
 # Get alacritty terminal emulator
-sudo pacman -S --noconfirm --needed alacritty
+wrapper "Install Alacritty" sudo pacman -S --noconfirm --needed alacritty
     # Download lightweight clipboard
-    sudo pacman -S --noconfirm --needed xclip
+    wrapper "Install xclip" sudo pacman -S --noconfirm --needed xclip
     # Install hack nerd fonts
-    sudo pacman -S --noconfirm --needed ttf-hack-nerd
+    wrapper "Install ttf-hack-nerd" sudo pacman -S --noconfirm --needed ttf-hack-nerd
     # Install xdg-utils (xdg-open)
-    sudo pacman -S --noconfirm --needed xdg-utils
+    wrapper "Install xdg-utils" sudo pacman -S --noconfirm --needed xdg-utils
 
 # Download neovim
-sudo pacman -S --noconfirm --needed neovim
+wrapper "Install Neovim" sudo pacman -S --noconfirm --needed neovim
     # Install lazygit
-    sudo pacman -S --noconfirm --needed lazygit
+    wrapper "Install lazygit" sudo pacman -S --noconfirm --needed lazygit
     # Install jq & tidy (for rest.nvim)
-    sudo pacman -S --noconfirm --needed jq tidy
+    wrapper "Install jq and tidy" sudo pacman -S --noconfirm --needed jq tidy
     # Install pynvim
-    sudo pacman -S --noconfirm --needed python-pynvim
+    wrapper "Install python-pynvim" sudo pacman -S --noconfirm --needed python-pynvim
 
 
 # Download Qutebrowser
-sudo pacman -S --noconfirm -needed qutebrowser
+wrapper "Install Qutebrowser" sudo pacman -S --noconfirm --needed qutebrowser
 
 # Download maim (snipping tool)
-sudo pacman -S --noconfirm --needed maim xdotool
+wrapper "Install screenshot tools" sudo pacman -S --noconfirm --needed maim xdotool
 
 # System update
-sudo pacman -Syu --noconfirm --needed
+wrapper "Perform system update" sudo pacman -Syu --noconfirm --needed
 
 # Run dotfiles.sh script
 sleep 1
