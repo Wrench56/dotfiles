@@ -42,7 +42,7 @@ wrapper "Fix logs disappearing on boot" sudo sed -i s/TTYVTDisallocate=yes/TTYVT
 wrapper "Run grub-mkconfig" sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Create user specific systemd service/timer directory
-wrapper "Create systemd service/timer directory" mkdir ~/.config/systemd ~/.config/systemd/user
+wrapper "Create systemd service/timer directory" mkdir -p ~/.config/systemd ~/.config/systemd/user
 
 # Configure bluetooth
 wrapper "Install bluetooth specific packages" sudo pacman -S --noconfirm bluez bluez-utils pipewire pipewire-pulse
@@ -56,10 +56,12 @@ wrapper "Enable pipewire-pulse" systemctl --user enable pipewire-pulse
 wrapper "Clone dotfiles repository" git clone https://github.com/Wrench56/dotfiles
 
 # Switch to correct branch
+cd dotfiles
 wrapper "Checkout arch-minimal branch" git checkout arch-minimal
+cd ..
 
 # Make the dotfiles scripts executable
-rm ./dotfiles/scripts/setup.sh
+wrapper "Remove setup.sh from the dotfiles repo" rm dotfiles/scripts/setup.sh
 for file in ./dotfiles/scripts/*
 do
     chmod +x "$file"
