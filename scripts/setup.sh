@@ -33,7 +33,7 @@ wrapper "Install common packages" sudo pacman -S --noconfirm --needed neofetch o
 wrapper "Install Xorg and i3wm" sudo pacman -S --noconfirm --needed i3-wm xorg-server xorg-xinit i3blocks
 
 # Get rofi
-wrapper "Install Rofi" sudo pacman -S --noconfirm --needed rofi papirus-icon-theme 
+wrapper "Install Rofi" sudo pacman -S --noconfirm --needed rofi papirus-icon-theme
 
 # Fix boot messages disappearing
 wrapper "Fix logs disappearing on boot" sudo sed -i s/TTYVTDisallocate=yes/TTYVTDisallocate=no/ /etc/systemd/system/getty.target.wants/getty@tty1.service; sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"/' /etc/default/grub
@@ -45,11 +45,12 @@ wrapper "Run grub-mkconfig" sudo grub-mkconfig -o /boot/grub/grub.cfg
 wrapper "Create systemd service/timer directory" mkdir ~/.config/systemd ~/.config/systemd/user
 
 # Configure bluetooth
-wrapper "Install bluetooth specific packages" sudo pacman -S --noconfirm bluez bluez-utils pulseaudio-bluetooth
+wrapper "Install bluetooth specific packages" sudo pacman -S --noconfirm bluez bluez-utils pipewire pipewire-pulse
 # Enable btusb module if not already loaded
 if [ "$(lsmod | grep -c "^btusb")" -eq 0 ]; then modprobe btusb; fi
-wrapper "Enable bluetooth service" sudo systemctl enable bluetooth.service
-wrapper "Enable pulseaudio" sudo systemctl --user enable pulseaudio
+wrapper "Enable bluetooth service" sudo systemctl enable bluetooth
+wrapper "Enable pipewire" systemctl --user enable pipewire
+wrapper "Enable pipewire-pulse" systemctl --user enable pipewire-pulse
 
 # Clone the dotfiles GitHub repository
 wrapper "Clone dotfiles repository" git clone https://github.com/Wrench56/dotfiles
