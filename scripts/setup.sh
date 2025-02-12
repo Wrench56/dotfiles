@@ -47,6 +47,9 @@ sudo systemctl --user enable pulseaudio
 # Clone the dotfiles GitHub repository
 git clone https://github.com/Wrench56/dotfiles
 
+# Switch to correct branch
+git checkout arch-minimal
+
 # Make the dotfiles scripts executable
 rm ./dotfiles/scripts/setup.sh
 for file in ./dotfiles/scripts/*
