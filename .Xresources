@@ -37,7 +37,3 @@
 *.color7: #ABB2BF
 *.color15: #ABB2Bf
 
-
-!! Suckless terminal
-
-st.font: Hack Nerd Font Mono:pixelsize=15:antialias=true:autohint=true
