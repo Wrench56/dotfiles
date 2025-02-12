@@ -68,6 +68,9 @@ wrapper "Run dunst.sh script" "$DOTFILES/scripts/dunst.sh"
 wrapper "Remove dunst icons from /usr/share/icons/" sudo rm -rf /usr/share/icons/dunst-icons
 wrapper "Link dunst icons to /usr/share/icons/" sudo ln -s "$DOTFILES/dunst/dunst-icons" /usr/share/icons/dunst-icons
 
+# nvim
+wrapper "Clone nvim-config repository" git clone https://github.com/Wrench56/nvim-config ~/.config/nvim
+
 # alacritty
 wrapper "Create alacritty config folder" mkdir ~/.config/alacritty
 wrapper "Link alacritty.yml to alacritty directory" ln -s "$DOTFILES/alacritty/alacritty.yml" ~/.config/alacritty/alacritty.yml
