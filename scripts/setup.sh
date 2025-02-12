@@ -15,6 +15,9 @@ sudo systemctl enable paccache.timer
 sudo pacman -S --noconfirm neofetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep
 git config --global credential.helper store
 
+# Get GitHub CLI
+sudo pacman -S --noconfirm github-cli
+
 # Get i3 window manager (only install the gnu-free-fonts)
 sudo pacman -S --noconfirm i3 xorg-server xorg-xinit i3blocks
 
