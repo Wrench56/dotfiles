@@ -32,6 +32,8 @@ wrapper "Install common packages" sudo pacman -S --noconfirm --needed neofetch o
 # Get i3 window manager (only install the gnu-free-fonts)
 wrapper "Install Xorg and i3wm" sudo pacman -S --noconfirm --needed i3-wm xorg-server xorg-xinit i3blocks
 
+wrapper "Install X specific packages" sudo pacman -S --noconfirm --needed xreader xorg-xrandr
+
 # Get rofi
 wrapper "Install Rofi" sudo pacman -S --noconfirm --needed rofi papirus-icon-theme
 
