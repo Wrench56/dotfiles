@@ -6,7 +6,7 @@
 
 printf "\033[1m[\033[33mWARN\033[0m\033[1m] This script will clear the terminal multiple times!\033[0m\n"
 printf "       Press Enter to continue"
-read -r tmp
+read -r _
 
 # Update system
 sudo pacman -Syu --noconfirm
@@ -18,7 +18,7 @@ clear
 printf "Showing systemctl errors\n"
 sudo systemctl --failed
 printf "Press Enter to continue"
-read -r tmp
+read -r _
 clear
 
 # Show journal errors
@@ -33,7 +33,7 @@ du -sh ~/.cache/
 du -sh /var/log/journal/
 du -sh ~/.config
 printf "Press Enter to delete the logs & clear the cache"
-read -r tmp
+read -r _
 clear
 
 # Delete the journal logs up until 2 weeks
