@@ -73,7 +73,7 @@ wrapper "Clone nvim-config repository" git clone https://github.com/Wrench56/nvi
 
 # alacritty
 wrapper "Create alacritty config folder" mkdir ~/.config/alacritty
-wrapper "Link alacritty.yml to alacritty directory" ln -s "$DOTFILES/alacritty/alacritty.yml" ~/.config/alacritty/alacritty.yml
+wrapper "Link alacritty.toml to alacritty directory" ln -s "$DOTFILES/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
 
 # rofi
 wrapper "Create rofi config folder" mkdir ~/.config/rofi
