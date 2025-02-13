@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Script to symlink every dotfile where it needs to be
 
@@ -11,13 +11,16 @@ DOTFILES=$(dirname -- "$(realpath -- "$(dirname "$(realpath -s "$0")")")")
 #   $2 - Command
 
 wrapper() {
-    output=$("${@:2}" 2>&1)
-    if [[ $? -eq 0 ]]
-    then
-        printf "\033[1m[\e[32m Ok \e[0m\033[1m] %s\e[0m\n" "$1"
+    cmd="$1"
+    shift
+    output=$("$@" 2>&1)
+    status=$?
+    if [ "$status" -eq 0 ]; then
+        printf "\033[1m[\033[32m Ok \033[0m\033[1m] %s\033[0m\n" "$cmd"
     else
-        printf "\033[1m[\e[31mFail\e[0m\033[1m] %s\e[0m\n       \033[1m\e[31mError\e[0m $output\n" "$1"
+        printf "\033[1m[\033[31mFail\033[0m\033[1m] %s\033[0m\n       \033[1m\033[31mError\033[0m %s\n" "$cmd" "$output"
     fi
+    return "$status"
 }
 
 # Parameters:
