@@ -4,20 +4,21 @@
 
 # shellcheck disable=SC2312
 
-DOTFILES=$(dirname -- "$(realpath -- "$(dirname "$(realpath -s "$0")")")")
-
 # Parameters:
 #   $1 - Label
 #   $2 - Command
 
 wrapper() {
-    output=$("${@:2}" 2>&1)
-    if [[ $? -eq 0 ]]
-    then
-        printf "\033[1m[\e[32m Ok \e[0m\033[1m] %s\e[0m\n" "$1"
+    cmd="$1"
+    shift
+    output=$("$@" 2>&1)
+    status=$?
+    if [ "$status" -eq 0 ]; then
+        printf "\033[1m[\033[32m Ok \033[0m\033[1m] %s\033[0m\n" "$cmd"
     else
-        printf "\033[1m[\e[31mFail\e[0m\033[1m] %s\e[0m\n       \033[1m\e[31mError\e[0m $output\n" "$1"
+        printf "\033[1m[\033[31mFail\033[0m\033[1m] %s\033[0m\n       \033[1m\033[31mError\033[0m %s\n" "$cmd" "$output"
     fi
+    return "$status"
 }
 
 # Enable pacman parallel downloads
@@ -58,9 +59,10 @@ wrapper "Enable pipewire-pulse" systemctl --user enable pipewire-pulse
 wrapper "Clone dotfiles repository" git clone https://github.com/Wrench56/dotfiles
 
 # Switch to correct branch
-cd dotfiles
-wrapper "Checkout arch-minimal branch" git checkout arch-minimal
-cd ..
+(
+    cd dotfiles || exit
+    wrapper "Checkout arch-minimal branch" git checkout arch-minimal
+)
 
 # Make the dotfiles scripts executable
 wrapper "Remove setup.sh from the dotfiles repo" rm dotfiles/scripts/setup.sh
