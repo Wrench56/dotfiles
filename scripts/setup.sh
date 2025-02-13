@@ -47,6 +47,11 @@ wrapper "Run grub-mkconfig" sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Create user specific systemd service/timer directory
 wrapper "Create systemd service/timer directory" mkdir -p ~/.config/systemd ~/.config/systemd/user
 
+# Set dash as default /bin/sh
+wrapper "Download dash" sudo pacman -S --noconfirm --needed dash
+wrapper "Remove /bin/sh link" sudo rm /bin/sh
+wrapper "Set dash as /bin/sh" sudo ln -s /bin/dash /bin/sh
+
 # Configure bluetooth
 wrapper "Install bluetooth specific packages" sudo pacman -S --noconfirm bluez bluez-utils pipewire pipewire-pulse
 # Enable btusb module if not already loaded
