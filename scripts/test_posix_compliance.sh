@@ -17,7 +17,7 @@ check_posix_compliance() {
         return
     else
         # Shebang found
-        printf "\033[1mTesting %s... \e[0m\n" "$1"
+        printf "\033[1mTesting %s... \033[0m\n" "$1"
         checkbashisms -p -n "$1"
         RETURN_CODE=$?
         if [ $RETURN_CODE -ne 0 ] && [ $RETURN_CODE -ne 4 ]; then return 1; fi
