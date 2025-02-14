@@ -109,6 +109,22 @@ wrapper "Install clang and gdb" sudo pacman -S --noconfirm --needed clang gdb
 # Install Node.js
 wrapper "Install Node" sudo pacman -S --noconfirm --needed nodejs npm
 
+##########################################
+################### AUR ##################
+##########################################
+
+# Install paru
+if sh -c "paru --version" >/dev/null 2>&1; then
+    printf "\033[1m[    \033[1m] Skipping paru installation\033[0m\n"
+else
+    wrapper "Prepare paru installation" sudo pacman -S --noconfirm --needed base-devel
+    wrapper "Clone paru repository" git clone https://aur.archlinux.org/paru.git
+    (
+        cd paru || exit 1
+        wrapper "Install paru" makepkg -si --noconfirm
+    )
+    wrapper "Remove paru repository" rm -rf paru
+fi
 
 ##########################################
 ################## APPS ##################

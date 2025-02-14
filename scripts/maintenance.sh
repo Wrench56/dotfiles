@@ -12,7 +12,7 @@ read -r _
 sudo pacman -Syu --noconfirm
 
 # Update AUR packages as well
-yay -Syu --noconfirm
+paru -Syu --noconfirm
 clear
 
 printf "Showing systemctl errors\n"
@@ -41,7 +41,7 @@ sudo journalctl --vacuum-time=2weeks
 
 # Clean the cache (paccache.timer actually does this already)
 sudo pacman -Sc --noconfirm
-yay -Sc --noconfirm
+paru -Sc --noconfirm
 
 # Delete orphan packages
 sudo pacman -Qtdq --noconfirm | sudo pacman -Rns --noconfirm -
