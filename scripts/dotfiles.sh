@@ -78,6 +78,10 @@ wrapper "Clone nvim-config repository" git clone https://github.com/Wrench56/nvi
 wrapper "Create alacritty config folder" mkdir ~/.config/alacritty
 wrapper "Link alacritty.toml to alacritty directory" ln -s "$DOTFILES/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
 
+# zsh
+wrapper "Clone zsh-config repository" git clone https://github.com/Wrench56/zsh-config
+wrapper "Run zsh-config install.sh" chmod +x zsh-config/install.sh; (cd zsh-config; ./install.sh)
+
 # rofi
 wrapper "Create rofi config folder" mkdir ~/.config/rofi
 wrapper "Link rofi config file to rofi directory" ln -s "$DOTFILES/rofi/config.rasi" ~/.config/rofi/config.rasi
