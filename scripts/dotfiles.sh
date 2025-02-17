@@ -80,7 +80,7 @@ wrapper "Link alacritty.toml to alacritty directory" ln -s "$DOTFILES/alacritty/
 
 # zsh
 wrapper "Clone zsh-config repository" git clone https://github.com/Wrench56/zsh-config
-wrapper "Run zsh-config install.sh" chmod +x zsh-config/install.sh; (cd zsh-config; ./install.sh)
+wrapper "Run zsh-config install.sh" chmod +x zsh-config/install.sh; (cd zsh-config || exit; ./install.sh)
 
 # rofi
 wrapper "Create rofi config folder" mkdir ~/.config/rofi
