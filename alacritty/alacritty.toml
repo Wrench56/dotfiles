@@ -154,7 +154,7 @@ semantic_escape_chars = ''',│`|:"' ()[]{}<>	'''
 
 [terminal.shell]
 args = ["--login"]
-program = "/bin/bash"
+program = "/bin/zsh"
 
 [bell]
 animation = "EaseOutExpo"
