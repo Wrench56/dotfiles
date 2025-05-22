@@ -28,7 +28,7 @@ wrapper "Enable parallel downloads for Pacman" sudo sed -i "s/#ParallelDownloads
 wrapper "Enable Pacman cache clearing" sudo pacman -Sy --noconfirm --needed pacman-contrib; sudo systemctl enable paccache.timer 
 
 # Get some frequently used packages
-wrapper "Install common packages" sudo pacman -S --noconfirm --needed neofetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep github-cli
+wrapper "Install common packages" sudo pacman -S --noconfirm --needed neofetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep github-cli tldr
 
 # Get i3 window manager (only install the gnu-free-fonts)
 wrapper "Install Xorg and i3wm" sudo pacman -S --noconfirm --needed i3-wm xorg-server xorg-xinit i3blocks
@@ -153,6 +153,9 @@ wrapper "Install Qutebrowser" sudo pacman -S --noconfirm --needed qutebrowser
 
 # Download maim (snipping tool)
 wrapper "Install screenshot tools" sudo pacman -S --noconfirm --needed maim xdotool
+
+# Download qman from AUR
+wrapper "Install qman tool" paru -S --noconfirm --needed qman
 
 # System update
 wrapper "Perform system update" sudo pacman -Syu --noconfirm --needed
