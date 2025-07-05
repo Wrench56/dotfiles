@@ -46,6 +46,13 @@ printf "Press Enter to delete the logs & clear the cache"
 read -r _
 clear
 
+# Show boot performance analysis
+printf "Boot performance breakdown:\n"
+systemd-analyze blame | head -n 50
+printf "Press Enter to finish"
+read -r _
+clear
+
 # Delete the journal logs up until 2 weeks
 sudo journalctl --vacuum-time=2weeks
 
