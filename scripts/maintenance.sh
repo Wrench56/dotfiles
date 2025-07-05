@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Maintenance script for arch
+# Maintenance script for Arch Linux
 
 # shellcheck disable=SC2312
 
@@ -21,6 +21,7 @@ sudo pacman -Syu --noconfirm
 paru -Syu --noconfirm
 clear
 
+# Show failed systemd units
 printf "Showing systemctl errors\n"
 sudo systemctl --failed
 printf "Press Enter to continue"
@@ -38,6 +39,9 @@ printf "Showing important directory sizes\n"
 du -sh ~/.cache/
 du -sh /var/log/journal/
 du -sh ~/.config
+printf "\n"
+printf "Disk usage overview\n"
+df -h --total
 printf "Press Enter to delete the logs & clear the cache"
 read -r _
 clear
@@ -51,5 +55,6 @@ paru -Sc --noconfirm
 
 # Delete orphan packages
 sudo pacman -Qtdq --noconfirm | sudo pacman -Rns --noconfirm -
-printf "Maintenance done!\n"
+clear
 
+printf "\033[1m[\033[32mDONE\033[0m\033[1m] Maintenance complete!\033[0m\n"
