@@ -24,6 +24,25 @@ wrapper() {
 # Enable pacman parallel downloads
 wrapper "Enable parallel downloads for Pacman" sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
+# Add Arch and CachyOS keys
+sudo pacman-key --init && sudo pacman-key --populate archlinux
+sudo pacman -Sy --noconfirm cachyos-keyring
+
+# Add CachyOS mirrors
+wrapper "Add CachyOS mirrors" sh -c '
+    curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz &&
+    tar xvf cachyos-repo.tar.xz &&
+    cd cachyos-repo &&
+    sudo ./cachyos-repo.sh
+'
+
+# Make sure we have the fastest mirrors
+wrapper "Install cachyos-rate-mirrors" sudo pacman -S --noconfirm --needed cachyos-rate-mirrors
+wrapper "Run cachyos-rate-mirrors" sudo cachyos-rate-mirrors --noconfirm
+
+# Update the current system
+wrapper "Update system" sudo pacman -Syu --noconfirm --needed
+
 # Weekly pacman cache clearing
 wrapper "Enable Pacman cache clearing" sudo pacman -Sy --noconfirm --needed pacman-contrib; sudo systemctl enable paccache.timer 
 
