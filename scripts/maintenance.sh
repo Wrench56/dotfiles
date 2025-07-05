@@ -8,6 +8,12 @@ printf "\033[1m[\033[33mWARN\033[0m\033[1m] This script will clear the terminal 
 printf "       Press Enter to continue"
 read -r _
 
+# Refresh pacman mirrors
+sudo cachyos-rate-mirrors --noconfirm
+
+# Refresh pacman keyring (https://wiki.archlinux.org/title/Pacman/Package_signing#Tips_and_tricks)
+sudo pacman -Sy --needed --noconfirm archlinux-keyring cachyos-keyring && sudo pacman -Su --noconfirm --needed
+
 # Update system
 sudo pacman -Syu --noconfirm
 
