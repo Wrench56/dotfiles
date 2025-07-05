@@ -72,7 +72,7 @@ wrapper "Remove /bin/sh link" sudo rm /bin/sh
 wrapper "Set dash as /bin/sh" sudo ln -s /bin/dash /bin/sh
 
 # Configure bluetooth
-wrapper "Install audio and bluetooth specific packages" sudo pacman -S --noconfirm bluez bluez-utils pipewire pipewire-pulse pipewire-alse wireplumber
+wrapper "Install audio and bluetooth specific packages" sudo pacman -S --noconfirm bluez bluez-utils pipewire pipewire-pulse pipewire-alsa wireplumber
 # Enable btusb module if not already loaded
 if [ "$(lsmod | grep -c "^btusb")" -eq 0 ]; then modprobe btusb; fi
 wrapper "Enable pipewire" systemctl --user enable pipewire pipewire-pulse wireplumber
