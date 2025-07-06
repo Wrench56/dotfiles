@@ -21,6 +21,12 @@ wrapper() {
     return "$status"
 }
 
+# Set swappiness
+if ! grep -q "^vm.swappiness=" /etc/sysctl.conf; then
+    wrapper "Set swappiness to 10" sh -c 'echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf >/dev/null'
+    wrapper "Apply swappiness" sudo sysctl -p
+fi
+
 # Enable pacman parallel downloads
 wrapper "Enable parallel downloads for Pacman" sudo sed -i "s/#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
 
