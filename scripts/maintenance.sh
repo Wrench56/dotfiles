@@ -8,6 +8,9 @@ printf "\033[1m[\033[33mWARN\033[0m\033[1m] This script will clear the terminal 
 printf "       Press Enter to continue"
 read -r _
 
+# Trim the root filesystem
+sudo fstrim / -v
+
 # Refresh pacman mirrors
 sudo cachyos-rate-mirrors --noconfirm
 
