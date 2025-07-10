@@ -1,0 +1,27 @@
+# Linux
+https://lore.kernel.org/all/new.atom linux kernel coding oss
+https://lwn.net/headlines/rss linux kernel coding oss
+https://magyarlinux.hu/feed linux kernel coding oss
+https://www.phoronix.com/rss.php linux kernel coding oss
+https://rss.app/feeds/oxDphX4tTWULH0AX.xml linux kernel coding oss
+
+# Arch Linux
+"query:Arch Linux:tags # \"arch\""
+https://archlinux.org/feeds/packages/x86_64/stable-repos/ arch linux oss !
+https://archlinux.org/feeds/packages/removed/x86_64/stable-repos/ arch linux oss !
+https://aur.archlinux.org/rss/ arch linux oss aur !
+https://cachyos.org/rss.xml arch linux oss cachyos !
+
+
+# Georgia Tech feeds
+"query:GT Calendar:tags # \"gt\""
+https://calendar.gatech.edu/taxonomy/term/12/feed gt !
+https://calendar.gatech.edu/taxonomy/term/13/feed gt !
+https://calendar.gatech.edu/taxonomy/term/14/feed gt !
+https://calendar.gatech.edu/taxonomy/term/15/feed gt !
+https://calendar.gatech.edu/taxonomy/term/16/feed gt !
+https://calendar.gatech.edu/taxonomy/term/17/feed gt !
+https://calendar.gatech.edu/taxonomy/term/18/feed gt !
+https://calendar.gatech.edu/taxonomy/term/19/feed gt !
+https://calendar.gatech.edu/taxonomy/term/20/feed gt !
+https://calendar.gatech.edu/taxonomy/term/21/feed gt !
