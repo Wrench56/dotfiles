@@ -91,6 +91,10 @@ wrapper "Link rofi menus to ~/.local/bin/rofi" ln -s "$DOTFILES/rofi/menus" ~/.l
 printf "       \033[1mMake rofi menus executable:\e[0m\n"
 make_executables "$HOME/.local/bin/rofi/rofi-*"
 
+# newsboat
+wrapper "Create newsboat config directory" mkdir -p ~/.config/newsboat
+wrapper "Link urls file to newsboat config directory" ln -s "$DOTFILES/newsboat/urls" ~/.config/newsboat/urls
+wrapper "Link config file to newsboat config directory" ln -s "$DOTFILES/newsboat/config" ~/.config/newsboat/config
+
 # maintenance.sh
 wrapper "Link maintenance.sh to ~/.local/bin" ln -s "$DOTFILES/scripts/maintenance.sh" ~/.local/bin/maintenance.sh
-
