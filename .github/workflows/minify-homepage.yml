@@ -11,20 +11,21 @@ permissions:
   contents: write
 
 jobs:
-  example:
+  minify-homepage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          cache: "npm"
-      - run: npm install html-minifier-terser -g
-      - run: |
-          html-minifier-terser homepage/dashboard.html -o homepage/index.html --collapse-whitespace --remove-comments --remove-attribute-quotes --remove-redundant-attributes --minify-css true --minify-js true
-          git add homepage/index.html
+          node-version: 20
+      - name: Minify HTML
+        run: |
+          npx --yes html-minifier-terser homepage/dashboard.html -o homepage/index.html --collapse-whitespace --remove-comments --remove-attribute-quotes --remove-redundant-attributes --minify-css true --minify-js true
+          git add -f homepage/index.html
       - uses: qoomon/actions--create-commit@v1
         id: commit
         with:
           message: "chore(homepage): minify browser homepage"
           skip-empty: true
-      - run: git push
+      - name: Push Changes
+        run: git push
