@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - homepage/index.html
+      - homepage/dashboard.html
 
 permissions:
   contents: write
@@ -20,8 +20,8 @@ jobs:
           cache: "npm"
       - run: npm install html-minifier-terser -g
       - run: |
-          html-minifier-terser homepage/index.html -o homepage/index.min.html --collapse-whitespace --remove-comments --remove-attribute-quotes --remove-redundant-attributes --minify-css true --minify-js true
-          git add homepage/index.min.html
+          html-minifier-terser homepage/dashboard.html -o homepage/index.html --collapse-whitespace --remove-comments --remove-attribute-quotes --remove-redundant-attributes --minify-css true --minify-js true
+          git add homepage/index.html
       - uses: qoomon/actions--create-commit@v1
         id: commit
         with:
