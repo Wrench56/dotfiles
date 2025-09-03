@@ -7,6 +7,7 @@ config.set('content.javascript.clipboard', 'access-paste')
 c.scrolling.smooth = True
 c.auto_save.session = True
 c.zoom.default = '100%'
+c.url.start_pages = ['file:///usr/local/share/browser_homepage/index.html']
 c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}'}
 
 
