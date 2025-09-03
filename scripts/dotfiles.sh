@@ -96,5 +96,10 @@ wrapper "Create newsboat config directory" mkdir -p ~/.config/newsboat
 wrapper "Link urls file to newsboat config directory" ln -s "$DOTFILES/newsboat/urls" ~/.config/newsboat/urls
 wrapper "Link config file to newsboat config directory" ln -s "$DOTFILES/newsboat/config" ~/.config/newsboat/config
 
+# Qutebrowser
+wrapper "Create qutebrowser config folder" mkdir ~/.config/qutebrowser
+wrapper "Link qutebrowser config.py file to qutebrowser directory" ln -s "$DOTFILES/qutebrowser/config.py" ~/.config/qutebrowser/config.py
+wrapper "Link browser homepage file to qutebrowser directory" ln -s "$DOTFILES/homepage/index.html" ~/.config/qutebrowser/index.html
+
 # maintenance.sh
 wrapper "Link maintenance.sh to ~/.local/bin" ln -s "$DOTFILES/scripts/maintenance.sh" ~/.local/bin/maintenance.sh
