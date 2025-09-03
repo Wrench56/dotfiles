@@ -1,0 +1,30 @@
+name: Minify Homepage
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - homepage/index.html
+
+permissions:
+  contents: write
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: "npm"
+      - run: npm install html-minifier-terser -g
+      - run: |
+          html-minifier-terser homepage/index.html -o homepage/index.min.html --collapse-whitespace --remove-comments --remove-attribute-quotes --remove-redundant-attributes --minify-css true --minify-js true
+          git add homepage/index.min.html
+      - uses: qoomon/actions--create-commit@v1
+        id: commit
+        with:
+          message: "chore(homepage): minify browser homepage"
+          skip-empty: true
+      - run: git push
