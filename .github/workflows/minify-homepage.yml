@@ -3,7 +3,7 @@ name: Minify Homepage
 on:
   push:
     branches:
-      - main
+      - arch-minimal
     paths:
       - homepage/dashboard.html
 
