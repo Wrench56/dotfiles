@@ -99,7 +99,8 @@ wrapper "Link config file to newsboat config directory" ln -s "$DOTFILES/newsboa
 # Qutebrowser
 wrapper "Create qutebrowser config folder" mkdir ~/.config/qutebrowser
 wrapper "Link qutebrowser config.py file to qutebrowser directory" ln -s "$DOTFILES/qutebrowser/config.py" ~/.config/qutebrowser/config.py
-wrapper "Link browser homepage file to qutebrowser directory" ln -s "$DOTFILES/homepage/index.html" ~/.config/qutebrowser/index.html
+wrapper "Create /usr/local/share/browser_homepage/ folder" sudo mkdir -p "/usr/local/share/browser_homepage"
+wrapper "Link browser homepage file to browser_homepage/ directory" sudo ln -s "$DOTFILES/homepage/index.html" "/usr/local/share/browser_homepage/index.html"
 
 # maintenance.sh
 wrapper "Link maintenance.sh to ~/.local/bin" ln -s "$DOTFILES/scripts/maintenance.sh" ~/.local/bin/maintenance.sh
