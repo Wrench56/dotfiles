@@ -53,7 +53,7 @@ wrapper "Update system" sudo pacman -Syu --noconfirm --needed
 wrapper "Enable Pacman cache clearing" sudo pacman -Sy --noconfirm --needed pacman-contrib; sudo systemctl enable paccache.timer 
 
 # Get some frequently used packages
-wrapper "Install common packages" sudo pacman -S --noconfirm --needed fastfetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep github-cli tldr man-pages man-db newsboat w3m
+wrapper "Install common packages" sudo pacman -S --noconfirm --needed fastfetch onefetch tokei htop git nano man-db exa wget bc unzip gdu speedtest-cli ripgrep github-cli tldr man-pages man-db newsboat w3m direnv
 
 # Get i3 window manager (only install the gnu-free-fonts)
 wrapper "Install Xorg and i3wm" sudo pacman -S --noconfirm --needed i3-wm xorg-server xorg-xinit i3blocks
