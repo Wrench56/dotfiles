@@ -10,7 +10,6 @@ c.zoom.default = '100%'
 c.url.start_pages = ['file:///usr/local/share/browser_homepage/index.html']
 c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}'}
 
-
 c.downloads.location.directory = '~/downloads'
 c.downloads.location.prompt = False
 
@@ -23,6 +22,9 @@ c.content.geolocation = False
 c.content.javascript.clipboard = 'access-paste'
 c.content.local_content_can_access_remote_urls = True
 config.set("content.cookies.accept", "all", "file://")
+
+# Font
+c.fonts.default_family = "Hack Nerd"
 
 # Theme
 
