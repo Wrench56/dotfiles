@@ -24,6 +24,9 @@ sudo pacman -Syu --noconfirm
 paru -Syu --noconfirm
 clear
 
+# Refresh mandb
+sudo mandb
+
 # Show failed systemd units
 printf "Showing systemctl errors\n"
 sudo systemctl --failed
