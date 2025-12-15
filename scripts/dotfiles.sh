@@ -102,5 +102,9 @@ wrapper "Link qutebrowser config.py file to qutebrowser directory" ln -s "$DOTFI
 wrapper "Create /usr/local/share/browser_homepage/ folder" sudo mkdir -p "/usr/local/share/browser_homepage"
 wrapper "Link browser homepage file to browser_homepage/ directory" sudo ln -s "$DOTFILES/homepage/index.html" "/usr/local/share/browser_homepage/index.html"
 
+# fontconfig
+wrapper "Create fontconfig folder" mkdir ~/.config/fontconfig
+wrapper "Link fonts.conf file to fontconfig/ directory" ln -s "$DOTFILES/fontconfig/fonts.conf" ~/.config/fontconfig/fonts.conf
+
 # maintenance.sh
 wrapper "Link maintenance.sh to ~/.local/bin" ln -s "$DOTFILES/scripts/maintenance.sh" ~/.local/bin/maintenance.sh
