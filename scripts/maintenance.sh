@@ -11,6 +11,9 @@ read -r _
 # Refresh pacman mirrors
 sudo cachyos-rate-mirrors --noconfirm
 
+# Fix weird pacman states
+sudo pacman-db-upgrade
+
 # Refresh pacman keyring (https://wiki.archlinux.org/title/Pacman/Package_signing#Tips_and_tricks)
 sudo pacman -Sy --needed --noconfirm archlinux-keyring cachyos-keyring && sudo pacman -Su --noconfirm --needed
 
@@ -59,6 +62,9 @@ clear
 # Delete the journal logs up until 2 weeks
 sudo journalctl --vacuum-time=2weeks
 
+# Clean systemd tempfiles
+sudo systemd-tmpfiles --clean
+
 # Clean the cache (paccache.timer actually does this already)
 sudo pacman -Scc --noconfirm
 paru -Scc --noconfirm
@@ -67,6 +73,9 @@ sudo paccache -ruk0
 # Delete clone and pkg directory in paru
 rm -rf ~/.cache/paru/clone/*
 rm -rf ~/.cache/paru/pkg/*
+
+# Remove partial pacman installs
+sudo rm -rf /var/cache/pacman/pkg/download-*
 
 # Delete orphan packages
 sudo pacman -Qtdq --noconfirm | sudo pacman -Rns --noconfirm -
