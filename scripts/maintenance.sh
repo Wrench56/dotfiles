@@ -8,9 +8,6 @@ printf "\033[1m[\033[33mWARN\033[0m\033[1m] This script will clear the terminal 
 printf "       Press Enter to continue"
 read -r _
 
-# Trim the root filesystem
-sudo fstrim / -v
-
 # Refresh pacman mirrors
 sudo cachyos-rate-mirrors --noconfirm
 
@@ -63,11 +60,19 @@ clear
 sudo journalctl --vacuum-time=2weeks
 
 # Clean the cache (paccache.timer actually does this already)
-sudo pacman -Sc --noconfirm
-paru -Sc --noconfirm
+sudo pacman -Scc --noconfirm
+paru -Scc --noconfirm
+sudo paccache -ruk0
+
+# Delete clone and pkg directory in paru
+rm -rf ~/.cache/paru/clone/*
+rm -rf ~/.cache/paru/pkg/*
 
 # Delete orphan packages
 sudo pacman -Qtdq --noconfirm | sudo pacman -Rns --noconfirm -
 clear
+
+# Trim the root filesystem
+sudo fstrim / -v
 
 printf "\033[1m[\033[32mDONE\033[0m\033[1m] Maintenance complete!\033[0m\n"
