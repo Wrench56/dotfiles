@@ -16,7 +16,7 @@ c.downloads.location.prompt = False
 c.fonts.default_size = '12pt'
 
 # Security
-c.content.cookies.accept = 'no-3rdparty'
+c.content.cookies.accept = 'all'
 c.content.webrtc_ip_handling_policy = 'default-public-interface-only'
 c.content.geolocation = False
 c.content.javascript.clipboard = 'access-paste'
