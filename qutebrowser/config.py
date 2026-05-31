@@ -15,6 +15,8 @@ c.downloads.location.prompt = False
 
 c.fonts.default_size = '12pt'
 
+config.set('content.headers.user_agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0', 'https://accounts.google.com/*')
+
 # Security
 c.content.cookies.accept = 'all'
 c.content.webrtc_ip_handling_policy = 'default-public-interface-only'
