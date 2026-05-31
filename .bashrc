@@ -15,3 +15,5 @@ export HISTFILE=~/.cache/bash/history
 HISTSIZE=10000
 
 source ~/.local/aliases
+
+. "$HOME/.cargo/env"
