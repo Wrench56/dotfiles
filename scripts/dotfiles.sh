@@ -37,6 +37,10 @@ wrapper "Create i3 config directory" mkdir ~/.config/i3/
 wrapper "Remove i3 config file" rm ~/.config/i3/config
 wrapper "Link config file to i3 config directory" ln -s "$DOTFILES/i3/config" ~/.config/i3/config
 
+wrapper "Create autorandr config directory" mkdir -p ~/.config/autorandr/postswitch.d/
+wrapper "Make notify-i3 script executable" chmod +x "$DOTFILES/i3/scripts/notify-i3"
+wrapper "Link notify-i3 to i3 config directory" ln -s "$DOTFILES/i3/scripts/notify-i3" ~/.config/autorandr/postswitch.d/notify-i3
+
 # .xinitrc
 wrapper "Make .xinitrc an executable" chmod +x "$DOTFILES/.xinitrc"
 wrapper "Link .xinitrc to HOME directory" ln -s "$DOTFILES/.xinitrc" ~/.xinitrc
