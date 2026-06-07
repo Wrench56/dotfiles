@@ -58,7 +58,9 @@ wrapper "Install common packages" sudo pacman -S --noconfirm --needed fastfetch 
 # Get i3 window manager (only install the gnu-free-fonts)
 wrapper "Install Xorg and i3wm" sudo pacman -S --noconfirm --needed i3-wm xorg-server xorg-xinit i3blocks
 
-wrapper "Install X specific packages" sudo pacman -S --noconfirm --needed xreader xorg-xrandr
+wrapper "Install X specific packages" sudo pacman -S --noconfirm --needed xreader xorg-xrandr autorandr
+
+wrapper "Enable autorandr service" sudo systemctl enable autorandr.service
 
 # Get rofi
 wrapper "Install Rofi" sudo pacman -S --noconfirm --needed rofi papirus-icon-theme
