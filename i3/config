@@ -172,6 +172,7 @@ bindsym $mod+p exec --no-startup-id rofi -show power-menu -modi power-menu:~/.lo
 
 # Scratchpads
 bindsym $mod+t [class="terminal"] scratchpad show; [class="terminal"] move position center
+bindsym $mod+Shift+t exec --no-startup-id alacritty --class terminal
 
 for_window [class="terminal"] floating enable
 for_window [class="terminal"] resize set 960 640
