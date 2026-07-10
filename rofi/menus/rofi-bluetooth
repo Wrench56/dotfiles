@@ -303,7 +303,14 @@ show_menu() {
             toggle_pairable
             ;;
         *)
-            device=$(bluetoothctl devices | grep "$chosen")
+            device=""
+            while IFS= read -r line; do
+                if [[ "$(echo "$line" | cut -d ' ' -f 3-)" == "$chosen" ]]; then
+                    device="$line"
+                    break
+                fi
+            done < <(bluetoothctl devices | grep '^Device ')
+
             # Open a submenu if a device is selected
             if [[ $device ]]; then device_menu "$device"; fi
             ;;
